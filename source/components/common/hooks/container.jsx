@@ -7,7 +7,7 @@ export default function useContainer() {
     const containerContext = () => {
         return useContext(ContainerContext);
     };
-    const Container = ({role, type}) => {
+    const Container = ({role, type, children}) => {
         return (
             <ContainerContext.Provider value={{role, type}}>
                 {children}
