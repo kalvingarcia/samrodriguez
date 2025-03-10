@@ -45,7 +45,7 @@ export default function About({}) {
                     <div className={classes.image} />
                     <div className={classes.bio}>
                         <Display>Hi, I'm Sam!</Display>
-                        <Body>Here is a little bit about me!</Body>
+                        <Body>I'm a graphic designer who is passionate about branding, packaging, and motion graphics.</Body>
                     </div>
                 </div>
             </div>
