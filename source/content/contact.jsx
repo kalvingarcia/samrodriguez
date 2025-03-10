@@ -15,12 +15,17 @@ const useStyles = tss.create(({theme}) => ({
         gap: "20px",
     },
     content: {
+        width: "100%",
+        maxWidth: "1000px",
         display: "flex",
         gap: "20px"
     },
+    left: {
+        width: "100%"
+    },
     form: {
         padding: "20px",
-        width: "500px",
+        width: "100%",
         height: "fit-content",
         backgroundColor: theme.neutral.container.hex(),
 
@@ -58,7 +63,7 @@ export default function Contact({}) {
         <section id="contact" className={classes.section}>
             <Title>Contact me!</Title>
             <div className={classes.content}>
-                <div>
+                <div className={classes.left}>
                     <Subtitle>Any Inquiries!</Subtitle>
                     <Body>Send any inquiries about my availablility or my projects to contact@samrodriguez.co.</Body>
                 </div>
