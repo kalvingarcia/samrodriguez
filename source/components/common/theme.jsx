@@ -67,7 +67,7 @@ const lightness = {
  * @param props The component only takes 1 prop. The `children` prop is specifically used to hold everything that will be themed.
  * @returns A React component.
  */
-export default function ThemeProvider({darkModeDefault = true, themeDefault = "default", palettePresets, children}) {
+export default function ThemeProvider({darkModeDefault = false, themeDefault = "default", palettePresets, children}) {
     const [darkMode, setDarkMode] = useState(darkModeDefault);
     const toggleDarkMode = () => {
         setDarkMode(!darkMode);
@@ -166,6 +166,7 @@ export default function ThemeProvider({darkModeDefault = true, themeDefault = "d
 
     const defaults = {
         "*": {
+            scrollbarGutter: "stable",
             scrollbarWidth: "thin",
             scrollbarColor: `${theme.primary.accent.hex()} ${theme.primary.container.alpha(0.5).hexa()}`,
             transition: "scrollbar 300ms ease"
