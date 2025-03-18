@@ -8,6 +8,7 @@ import CaustenMediumOblique from '../public/fonts/causten-medium-oblique.woff2';
 import CaustenSemiBold from '../public/fonts/causten-semi-bold.woff2';
 import CaustenBold from '../public/fonts/causten-bold.woff2';
 import CaustenExtraBold from '../public/fonts/causten-extra-bold.woff2';
+import SamIcons from '../public/fonts/sam-icons.woff';
 
 const lightBlue = "#b0dbe1";
 const frenchGray = "#c2c7df"
@@ -32,33 +33,55 @@ function App() {
                     font-family: "Causten Medium";
                     font-weight: "normal";
                     font-style: "normal";
-                    src:  url(${CaustenMedium});
+                    src: url(${CaustenMedium});
                 }
                 @font-face {
                     font-family: "Causten Medium";
                     font-weight: "normal";
                     font-style: "oblique";
-                    src:  url(${CaustenMediumOblique});
+                    src: url(${CaustenMediumOblique});
                 }
                 @font-face {
                     font-family: "Causten Medium";
                     font-weight: "bold";
                     font-style: "normal";
-                    src:  url(${CaustenSemiBold});
+                    src: url(${CaustenSemiBold});
                 }
 
                 @font-face {
                     font-family: "Causten Bold";
                     font-weight: "normal";
                     font-style: "normal";
-                    src:  url(${CaustenBold});
+                    src: url(${CaustenBold});
                 }
 
                 @font-face {
                     font-family: "Causten Extra Bold";
                     font-weight: "normal";
                     font-style: "normal";
-                    src:  url(${CaustenExtraBold});
+                    src: url(${CaustenExtraBold});
+                }
+
+                @font-face {
+                    font-family: "Sam Icons";
+                    src: url(${SamIcons});
+                }
+                .sam-icons {
+                    font-family: "Sam Icons";
+                    font-weight: normal;
+                    font-style: normal;
+                    display: inline-block;
+                    line-height: 1;
+                    text-transform: none;
+                    letter-spacing: normal;
+                    word-wrap: normal;
+                    white-space: nowrap;
+                    direction: ltr;
+            
+                    -webkit-font-smoothing: antialiased;
+                    text-rendering: optimizeLegibility;
+                    -mos-osx-font-smoothing: grayscale;
+                    font-feature-settings: 'liga';
                 }
 
                 :root {

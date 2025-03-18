@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {tss} from './common/theme';
 import useContainer from './common/hooks/container';
 import {Label} from './common/typography';
+import {Icon} from './common/iconography';
 
 const useStyles = tss.create(({theme, scrolled, hovered}) => ({
     header: {
@@ -20,6 +21,10 @@ const useStyles = tss.create(({theme, scrolled, hovered}) => ({
         alignItems: "center",
         justifyContent: "space-between",
         overflow: "hidden",
+    },
+    logo: {
+        display: "flex",
+        gap: "10px"
     },
     navlinks: {
         display: "flex",
@@ -47,7 +52,10 @@ export default function Header({}) {
         <Container role={scrolled || hovered? "neutral" : "primary"} type="container">
             <header className={classes.header} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
                 <div className={classes.content}>
-                    <Label><a href="#about">sam rodriguez</a></Label>
+                    <div className={classes.logo}>
+                        <Icon iconClass="sam-icons" icon="logo" />
+                        <Label><a href="#about">sam rodriguez</a></Label>
+                    </div>
                     <div className={classes.navlinks}>
                         <Label><a href="#about">about</a></Label>
                         <Label><a href="#projects">work</a></Label>
