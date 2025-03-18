@@ -32,10 +32,10 @@ export default function Footer({}) {
         <Container role="primary" type="container">
             <footer className={classes.footer}>
                 <div className={classes.socials}>
-                    <Label>Instagram</Label>
-                    <Label>LinkedIn</Label>
+                    <Label><a>instagram</a></Label>
+                    <Label><a>linkedIn</a></Label>
                 </div>
-                <Label className={classes.credits}>Designed by Sam Rodriguez and Built by Kalvin Garcia</Label>
+                <Label className={classes.credits}>designed by sam rodriguez and built by <a href="https://www.kalvingarcia.com">kalvin garcia</a></Label>
             </footer>
         </Container>
     );
