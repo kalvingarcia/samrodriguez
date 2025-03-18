@@ -9,7 +9,7 @@ const useStyles = tss.create(({theme, scrolled, hovered}) => ({
         padding: "0px 40px",
         top: 0,
         zIndex: 1000,
-        backgroundColor: scrolled || hovered? theme.neutral.containerLowest.hex() : theme.primary.container.hex(),
+        backgroundColor: scrolled || hovered? theme.neutral.containerLowest.hex() : theme.neutral.containerHighest.hex(),
     },
     content: {
         margin: "auto",
@@ -47,11 +47,11 @@ export default function Header({}) {
         <Container role={scrolled || hovered? "neutral" : "primary"} type="container">
             <header className={classes.header} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
                 <div className={classes.content}>
-                    <Label>Sam Rodriguez</Label>
+                    <Label><a href="#about">sam rodriguez</a></Label>
                     <div className={classes.navlinks}>
-                        <Label>Work</Label>
-                        <Label>About</Label>
-                        <Label>Contact</Label>
+                        <Label><a href="#about">about</a></Label>
+                        <Label><a href="#projects">work</a></Label>
+                        <Label><a href="#contact">contact</a></Label>
                     </div>
                 </div>
             </header>
