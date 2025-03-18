@@ -3,7 +3,7 @@ import React from 'react';
 import {tss} from './theme';
 import useContainer from './hooks/container';
 import useRippleEffect from './hooks/ripple';
-import Icon from './iconography';
+import {Icon} from './iconography';
 import {Label} from './typography';
 
 // Button styles.
