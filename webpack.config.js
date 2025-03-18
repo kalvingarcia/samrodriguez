@@ -69,6 +69,7 @@ const exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
+            favicon: './public/images/icon.svg',
             filename: resolve('./out/index.html'),
             template: "./index.html"
         }),
