@@ -28,6 +28,7 @@ const useStyles = tss.create(({theme}) => ({
         width: "100%",
         height: "fit-content",
         backgroundColor: theme.neutral.container.hex(),
+        borderRadius: "20px 0px",
 
         "& .submit": {
             alignSelf: "flex-end"
@@ -61,19 +62,19 @@ export default function Contact({}) {
     const {classes} = useStyles({});
     return (
         <section id="contact" className={classes.section}>
-            <Title>Contact me!</Title>
+            <Title>contact me!</Title>
             <div className={classes.content}>
                 <div className={classes.left}>
-                    <Subtitle>Any Inquiries!</Subtitle>
-                    <Body>Send any inquiries about my availablility or my projects to contact@samrodriguez.co.</Body>
+                    <Subtitle>any inquiries!</Subtitle>
+                    <Body>send any inquiries about my availablility or my projects to contact@samrodriguez.co.</Body>
                 </div>
                 <div className={classes.form}>
                     <Form id="contact-form">
-                        <TextField label="Name" placeholder="John Doe" required />
-                        <TextField label="Email" placeholder="sample@email.com" required />
-                        <TextField label="Phone (optional)" placeholder="123-456-7890" />
-                        <TextArea  label="Message" placeholder="Write your message here!" required />
-                        <Button className="submit" icon="send" onClick={validate}>Submit</Button>
+                        <TextField label="name" placeholder="john doe" required />
+                        <TextField label="email" placeholder="sample@email.com" required />
+                        <TextField label="phone (optional)" placeholder="123-456-7890" />
+                        <TextArea  label="message" placeholder="write your message here!" required />
+                        <Button className="submit" icon="send" onClick={validate}>submit</Button>
                     </Form>
                 </div>
             </div>
