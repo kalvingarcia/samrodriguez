@@ -13,7 +13,7 @@ const useStyles = tss.create(({theme}) => ({
     content: {
         padding: "40px",
         width: "100%",
-        height: "500px",
+        height: "550px",
         backgroundColor: theme.neutral.containerHighest.hex()
     },
     container: {
@@ -21,8 +21,9 @@ const useStyles = tss.create(({theme}) => ({
         width: "100%",
         maxWidth: "1000px",
         display: "flex",
+        alignItems: "center",
         justifyContent: "center",
-        gap: "20px",
+        gap: "150px",
     },
     wave: {
         width: "100%",
@@ -30,12 +31,22 @@ const useStyles = tss.create(({theme}) => ({
         fill: theme.neutral.containerHighest.hex()
     },
     image: {
+        flex: "1 0 fit-content",
         width: "100%",
-        height: "400px",
+        height: "500px",
+        padding: "5px",
         border: `3pt dashed ${theme.primary.accent.hex()}`
     },
     bio: {
+        flex: "0 1 auto",
         width: "100%",
+        display: "flex",
+        flexDirection: "column",
+        gap: "20px",
+
+        "& .learnMore": {
+            alignSelf: "center"
+        }
     },
     intro: {
         color: theme.secondary.accent.hex()
@@ -52,7 +63,7 @@ export default function About({}) {
                     <div className={classes.bio}>
                         <Display className={classes.intro}>hi, i'm sam!</Display>
                         <Body>i'm a graphic designer who is passionate about branding, packaging, and motion graphics.</Body>
-                        <Button>learn more!</Button>
+                        <Button className="learnMore">learn more!</Button>
                     </div>
                 </div>
             </div>
