@@ -3,11 +3,71 @@ import {createRoot} from 'react-dom/client';
 import {GlobalStyles} from 'tss-react';
 import ThemeProvider from './components/common/theme';
 import Layout from './components/layout';
+import CaustenMedium from '../public/fonts/causten-medium.woff2';
+import CaustenMediumOblique from '../public/fonts/causten-medium-oblique.woff2';
+import CaustenSemiBold from '../public/fonts/causten-semi-bold.woff2';
+import CaustenBold from '../public/fonts/causten-bold.woff2';
+import CaustenExtraBold from '../public/fonts/causten-extra-bold.woff2';
+
+const lightBlue = "#b0dbe1";
+const frenchGray = "#c2c7df"
+const pinkLavender = "#edb7e2";
+const flax = "#efe196";
+const lilac ="#bbacd5";
 
 function App() {
     return (
-        <ThemeProvider>
-            <GlobalStyles styles={``} />
+        <ThemeProvider 
+            palettePresets={{default: {
+                primary: lightBlue,
+                secondary: frenchGray,
+                tertiary: pinkLavender,
+                error: flax,
+                neutral: lilac
+            }}}
+        >
+            <GlobalStyles styles={`
+                @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+                @font-face {
+                    font-family: "Causten Medium";
+                    font-weight: "normal";
+                    font-style: "normal";
+                    src:  url(${CaustenMedium});
+                }
+                @font-face {
+                    font-family: "Causten Medium";
+                    font-weight: "normal";
+                    font-style: "oblique";
+                    src:  url(${CaustenMediumOblique});
+                }
+                @font-face {
+                    font-family: "Causten Medium";
+                    font-weight: "bold";
+                    font-style: "normal";
+                    src:  url(${CaustenSemiBold});
+                }
+
+                @font-face {
+                    font-family: "Causten Bold";
+                    font-weight: "normal";
+                    font-style: "normal";
+                    src:  url(${CaustenBold});
+                }
+
+                @font-face {
+                    font-family: "Causten Extra Bold";
+                    font-weight: "normal";
+                    font-style: "normal";
+                    src:  url(${CaustenExtraBold});
+                }
+
+                :root {
+                    --display-font: "Lobster", sans-serif;
+                    --title-font: "Causten Extra Bold", sans-serif;
+                    --heading-font: "Causten Bold", sans-serif;
+                    --body-font: "Causten Medium", sans-serif;
+                }
+            `} />
             <Layout />
         </ThemeProvider>
     );
