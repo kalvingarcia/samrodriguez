@@ -13,7 +13,7 @@ const useStyles = tss.create(({theme}) => ({
     content: {
         padding: "40px",
         width: "100%",
-        height: "550px",
+        height: "650px",
         backgroundColor: theme.neutral.containerHighest.hex()
     },
     container: {
@@ -23,7 +23,7 @@ const useStyles = tss.create(({theme}) => ({
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        gap: "150px",
+        gap: "100px",
 
         "@media (max-width: 1080px)": {
             flexDirection: "column",
@@ -38,20 +38,16 @@ const useStyles = tss.create(({theme}) => ({
     image: {
         flex: "1 0 fit-content",
         width: "100%",
-        height: "500px",
-        padding: "5px",
-        border: `3pt dashed ${theme.primary.accent.hex()}`
+        maxWidth: "500px",
+        borderRadius: "50% 0%"
     },
     bio: {
         flex: "0 1 auto",
         width: "100%",
+        maxWidth: "500px",
         display: "flex",
         flexDirection: "column",
-        gap: "20px",
-
-        "& .learnMore": {
-            alignSelf: "center"
-        }
+        gap: "20px"
     },
     intro: {
         color: theme.secondary.accent.hex()
