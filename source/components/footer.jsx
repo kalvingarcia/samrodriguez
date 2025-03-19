@@ -2,6 +2,7 @@ import React from 'react';
 import {tss} from './common/theme';
 import useContainer from './common/hooks/container';
 import {Label}  from './common/typography';
+import IconButton from './common/iconography';
 
 const useStyles = tss.create(({theme}) => ({
     footer: {
@@ -14,7 +15,10 @@ const useStyles = tss.create(({theme}) => ({
         backgroundColor: theme.tertiary.container.hex()
     },
     socials: {
-        alignSelf: "flex-end",
+        margin: "auto",
+        width: "100%",
+        maxWidth: "1000px",
+        justifyContent: "flex-end",
         display: "flex",
         gap: "10px"
     },
@@ -32,8 +36,8 @@ export default function Footer({}) {
         <Container role="primary" type="container">
             <footer className={classes.footer}>
                 <div className={classes.socials}>
-                    <Label><a>instagram</a></Label>
-                    <Label><a>linkedIn</a></Label>
+                    <IconButton iconClass="sam-icons" icon="instagram" appearance="text" />
+                    <IconButton iconClass="sam-icons" icon="linkedin" appearance="text" />
                 </div>
                 <Label className={classes.credits}>designed by sam rodriguez and built by <a href="https://www.kalvingarcia.com">kalvin garcia</a></Label>
             </footer>
