@@ -9,10 +9,11 @@ import Footer from './footer';
 
 const useStyles = tss.create(({theme}) => ({
     content: {
+        width: "100%",
+        minHeight: "100%",
         display: "flex",
         flexDirection: "column",
-        alignContent: "center",
-        minHeight: "100%"
+        alignContent: "center"
     }
 }));
 
