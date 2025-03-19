@@ -4,13 +4,16 @@ import useContainer from './common/hooks/container';
 import {Label} from './common/typography';
 import IconButton, {Icon} from './common/iconography';
 
-const useStyles = tss.create(({theme, scrolled, hovered}) => ({
+const useStyles = tss.create(({theme, scrolled, hovered, open}) => ({
+    scrollLock: {
+        overflow: "hidden"
+    },
     header: {
         position: "sticky",
         padding: "0px 40px",
         top: 0,
         zIndex: 1000,
-        backgroundColor: scrolled || hovered? theme.neutral.containerLowest.hex() : theme.neutral.containerHighest.hex(),
+        backgroundColor: scrolled || hovered || open? theme.neutral.containerLowest.hex() : theme.neutral.containerHighest.hex(),
     },
     content: {
         margin: "auto",
@@ -37,26 +40,61 @@ const useStyles = tss.create(({theme, scrolled, hovered}) => ({
         }
     },
     hamburger: {
-        display: "flex",
-        alignItems: "center",
-        gap: "20px",
+        "& .scrim": {
+            display: open? "block" : "none",
+            position: "fixed",
+            width: "100vw",
+            height: "100vh",
+            inset: 0,
+            backgroundColor: theme.neutral.shadow.alpha(0.5).hexa(),
+            zIndex: 0
+        },
+        "& .button": {
+            zIndex: 1000,
+            "@media (min-width: 1080px)": {
+                display: "none"
+            }
+        },
+        "& .container": {
+            display: "flex",
+            alignItems: "center",
+            gap: "20px",
+            overflow: "hidden",
 
-        "@media (max-width: 1080px)": {
-            display: "none"
+            "@media (max-width: 1080px)": {
+                position: "fixed",
+                inset: 0,
+                width: "100%",
+                aspectRatio: 1,
+                flexDirection: "column",
+                backgroundColor: theme.primary.container.hex(),
+                clipPath: open? "circle(500px at 100% 0)" : "circle(0 at 100% 0)",
+                transition: "clip-path 300ms ease-in-out",
+
+                "& > *": {
+                    alignSelf: "flex-end",
+                    position: "relative",
+                    top: "100px",
+                    right: "100px"
+                }
+            }
         }
     },
     navlinks: {
         display: "flex",
         alignItems: "center",
-        gap: "20px"
+        gap: "20px",
+
+        "@media (max-width: 1080px)": {
+            flexDirection: "column"
+        }
     }
 }));
 
 export default function Header({}) {
     const {darkMode, toggleDarkMode} = useDarkMode();
     const handleDarkMode = () => {
-        document.cookie = `
-            samPortfolioDarkMode=${!darkMode}; domain=samrodriguez.co; max-age=3156000000; samesite=strict; secure`;
+        document.cookie = `samPortfolioDarkMode=${!darkMode}; domain=samrodriguez.co; max-age=3156000000; samesite=strict; secure`;
         toggleDarkMode();
     };
 
@@ -71,27 +109,39 @@ export default function Header({}) {
         return () => root?.removeEventListener("scroll", checkScroll);
     }, []);
 
-    const {Container} = useContainer();
+    const [open, setOpen] = useState(false);
 
-    const {classes} = useStyles({scrolled, hovered});
+    const {Container} = useContainer();
+    const {classes} = useStyles({scrolled, hovered, open});
+
+    const toggleHamburger = () => {
+        setOpen(!open);
+        if(!open) document.getElementById("root").classList.add(classes.scrollLock);
+        else document.getElementById("root").classList.remove(classes.scrollLock)
+    };
+
     return (
-        <Container role={scrolled || hovered? "neutral" : "primary"} type="container">
-            <header className={classes.header} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
-                <div className={classes.content}>
-                    <div className={classes.logo}>
-                        <Icon className="icon" iconClass="sam-icons" icon="logo" />
-                        <Label className="text">am rodriguez</Label>
-                    </div>
-                    <div className={classes.hamburger}>
-                        <div className={classes.navlinks}>
-                            <Label><a href="#about">about</a></Label>
-                            <Label><a href="#projects">work</a></Label>
-                            <Label><a href="#contact">contact</a></Label>
-                        </div>
-                        <IconButton icon={darkMode? "dark_mode" : "light_mode"} role="tertiary" appearance='tonal' onClick={handleDarkMode} />
-                    </div>
+        <header className={classes.header} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+            <div className={classes.content}>
+                <div className={classes.logo}>
+                    <Icon className="icon" iconClass="sam-icons" icon="logo" />
+                    <Label className="text">am rodriguez</Label>
                 </div>
-            </header>
-        </Container>
+                <div className={classes.hamburger}>
+                    <div className="scrim" onClick={() => setOpen(false)} />
+                    <IconButton className="button" icon={open? "close" : "menu"} role={open? "tertiary" : "primary"} onClick={toggleHamburger} />
+                    <Container role={open? "primary" : "neutral"} type="container">
+                        <div className="container">
+                            <div className={classes.navlinks}>
+                                <Label><a href="#about">about</a></Label>
+                                <Label><a href="#projects">work</a></Label>
+                                <Label><a href="#contact">contact</a></Label>
+                            </div>
+                            <IconButton className="darkModeButton" icon={darkMode? "dark_mode" : "light_mode"} role="tertiary" appearance='outlined' onClick={handleDarkMode} />
+                        </div>
+                    </Container>
+                </div>
+            </div>
+        </header>
     );
 }
