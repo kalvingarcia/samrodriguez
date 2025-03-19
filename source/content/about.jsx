@@ -24,6 +24,11 @@ const useStyles = tss.create(({theme}) => ({
         alignItems: "center",
         justifyContent: "center",
         gap: "150px",
+
+        "@media (max-width: 1080px)": {
+            flexDirection: "column",
+            gap: "20px"
+        }
     },
     wave: {
         width: "100%",

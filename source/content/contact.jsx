@@ -18,7 +18,12 @@ const useStyles = tss.create(({theme}) => ({
         width: "100%",
         maxWidth: "1000px",
         display: "flex",
-        gap: "20px"
+        gap: "20px",
+
+        "@media (max-width: 1080px)": {
+            flexDirection: "column",
+            gap: "20px"
+        }
     },
     left: {
         width: "100%"
