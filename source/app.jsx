@@ -19,6 +19,7 @@ const lilac ="#bbacd5";
 function App() {
     const darkModeDefaut = document.cookie.split("; ").find(row => row.startsWith("samPortfolioDarkMode="))
         ?.split("=")[1];
+    console.log(darkModeDefaut);
 
     return (
         <ThemeProvider 
