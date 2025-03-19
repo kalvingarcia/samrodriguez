@@ -26,11 +26,16 @@ const useStyles = tss.create(({theme}) => ({
         }
     },
     left: {
-        width: "100%"
+        marginLeft: "auto",
+        marginRight: "auto",
+        width: "100%",
+        maxWidth: "500px"
     },
     form: {
+        margin: "auto",
         padding: "20px",
         width: "100%",
+        maxWidth: "500px",
         height: "fit-content",
         backgroundColor: theme.neutral.container.hex(),
         borderRadius: "20px 0px",
