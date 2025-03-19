@@ -5,7 +5,7 @@ import {Title} from '../components/common/typography';
 import Project from '../components/project';
 import projects from '../../public/projects.json';
 
-const ROW_COUNT = 4;
+const ROW_COUNT = 3;
 
 const useStyles = tss.create(({theme, open, contentHeight, contentSize}) => ({
     section: {
