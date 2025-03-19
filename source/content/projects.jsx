@@ -21,7 +21,7 @@ const useStyles = tss.create(({theme, open, contentHeight, contentSize, openProj
         maxWidth: "1000px",
         height: open? contentHeight : 0,
         minHeight: contentSize,
-        transition: `height ${contentHeight / 3}ms`,
+        transition: `height ${Math.max(300, contentHeight / 3)}ms`,
         overflow: "hidden",
         display: "flex",
         flexDirection: "column",
@@ -69,6 +69,7 @@ const useStyles = tss.create(({theme, open, contentHeight, contentSize, openProj
             bottom: 0,
             width: "100%",
             height: openProject? "90%" : 0,
+            transition: "height 300ms ease-in-out",
             backgroundColor: theme.primary.container.hex(),
         }
     }
