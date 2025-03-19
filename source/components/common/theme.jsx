@@ -165,12 +165,6 @@ export default function ThemeProvider({darkModeDefault = false, themeDefault = "
     }, [darkMode]);
 
     const defaults = {
-        "*": {
-            scrollbarGutter: "stable",
-            scrollbarWidth: "thin",
-            scrollbarColor: `${theme.primary.accent.hex()} ${theme.primary.container.alpha(0.5).hexa()}`,
-            transition: "scrollbar 300ms ease"
-        },
         "body *": {
             boxSizing: "border-box",
             "&::before, &::after": {
@@ -207,6 +201,12 @@ export default function ThemeProvider({darkModeDefault = false, themeDefault = "
             overscrollBehavior: "none", // This part was specifically to avoid MacOS overscroll, which was bugging me.
             fontWeight: "400",
             fontStyle: "normal"
+        },
+        "#root": {
+            scrollbarGutter: "stable",
+            scrollbarWidth: "thin",
+            scrollbarColor: `${theme.primary.accent.hex()} ${theme.primary.container.alpha(0.5).hexa()}`,
+            transition: "scrollbar 300ms ease"
         },
         "h1, h2, h3, h4, button, input, label": {
             lineHeight: 1
