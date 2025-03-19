@@ -1,6 +1,5 @@
 import React from 'react';
 import {tss} from './common/theme';
-import useProjectContext from './hooks/project';
 import Header from './header';
 import About from '../content/about';
 import Projects from '../content/projects';
@@ -18,10 +17,9 @@ const useStyles = tss.create(({theme}) => ({
 }));
 
 export default function Layout({}) {
-    const {ProjectProvider} = useProjectContext();
     const {classes} = useStyles({});
     return (
-        <ProjectProvider>
+        <>
             <Header />
             <main className={classes.content}>
                 <About />
@@ -29,6 +27,6 @@ export default function Layout({}) {
                 <Contact />
             </main>
             <Footer />
-        </ProjectProvider>
+        </>
     );
 }
