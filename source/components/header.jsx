@@ -34,16 +34,16 @@ const useStyles = tss.create(({theme, scrolled, hovered}) => ({
             fontSize: "1.25rem",
             marginLeft: "-20px",
             marginTop: "-5px",
-
-            "@media (max-width: 1080px)": {
-                display: "none"
-            }
         }
     },
     hamburger: {
         display: "flex",
         alignItems: "center",
-        gap: "20px"
+        gap: "20px",
+
+        "@media (max-width: 1080px)": {
+            display: "none"
+        }
     },
     navlinks: {
         display: "flex",
@@ -56,12 +56,7 @@ export default function Header({}) {
     const {darkMode, toggleDarkMode} = useDarkMode();
     const handleDarkMode = () => {
         document.cookie = `
-            samPortfolioDarkMode=${!darkMode};
-            domain=samrodriguez.co;
-            max-age=3156000000;
-            samesite=strict;
-            secure;
-        `;
+            samPortfolioDarkMode=${!darkMode}; domain=samrodriguez.co; max-age=3156000000; samesite=strict; secure`;
         toggleDarkMode();
     };
 
