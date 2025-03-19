@@ -3,10 +3,12 @@ import {tss} from '../components/common/theme';
 import Button from '../components/common/button';
 import {Title} from '../components/common/typography';
 import Project from '../components/project';
+import projects from '../../public/projects.json';
 
-const useStyles = tss.create(({theme, open, contentHeight}) => ({
+const ROW_COUNT = 4;
+
+const useStyles = tss.create(({theme, open, contentHeight, contentSize}) => ({
     section: {
-        padding: "40px",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -16,12 +18,11 @@ const useStyles = tss.create(({theme, open, contentHeight}) => ({
         width: "100%",
         maxWidth: "1000px",
         height: open? contentHeight : 0,
-        minHeight: "320px",
+        minHeight: contentSize,
         transition: "height 300ms ease-in-out",
         overflow: "hidden",
         display: "flex",
         flexDirection: "column",
-        gap: "20px",
 
         "& > *": {
             flex: "0 0 auto"
@@ -29,12 +30,11 @@ const useStyles = tss.create(({theme, open, contentHeight}) => ({
     },
     row: {
         width: "100%",
-        maxHeight: "320px",
+        maxHeight: contentSize,
         display: "flex",
-        gap: "20px",
 
         "& > *": {
-            flex: "0 1 auto"
+            flex: `0 0 ${contentSize}`
         }
     }
 }));
@@ -43,30 +43,42 @@ export default function Projects({}) {
     const [open, setOpen] = useState();
     const toggleOpen = () => setTimeout(() => setOpen(!open), 200);
 
-    const [content, setContent] = useState(undefined);
     const [contentHeight, setContentHeight] = useState();
-    useEffect(() => {
-        if(content && !open) {
-            setContentHeight(content.scrollHeight);
-            console.log(content.scrollHeight);
-        }
-    }, [content, open]);
+    const [contentSize, setContentSize] = useState();
+    const {classes} = useStyles({open, contentHeight, contentSize});
 
-    const {classes} = useStyles({open, contentHeight});
+    const [rows] = useState(() => {
+        const rows = [];
+        for (let i = 0; i < projects.length; i += ROW_COUNT) {
+            const chunk = projects.slice(i, i + ROW_COUNT);
+            rows.push(
+                <div key={i} className={classes.row}>
+                    {chunk.map(project => (
+                        <Project key={project.directory} directory={project.directory} />
+                    ))}
+                </div>
+            );
+        }
+        return rows;
+    });
+    useEffect(() => {    
+        const checkWindowSize = () => {
+            const width = Math.min(1000, window.innerWidth);
+            setContentSize(width / ROW_COUNT);
+            setContentHeight((width / ROW_COUNT) * rows.length);
+            console.log(width / ROW_COUNT);
+        };
+        checkWindowSize();
+
+        window.addEventListener("resize", checkWindowSize);
+        return () => window.removeEventListener("resize", checkWindowSize);
+    }, []);
+
     return (
         <section id="projects" className={classes.section}>
             <Title>{open? "all projects" : "featured projects"}</Title>
-            <div ref={setContent} className={classes.content}>
-                <div className={classes.row}>
-                    <Project directory="santurce-event" />
-                    <Project directory="tender-is-the-flesh" />
-                    <Project />
-                </div>
-                <div className={classes.row}>
-                    <Project />
-                    <Project />
-                    <Project />
-                </div>
+            <div className={classes.content}>
+                {rows}
             </div>
             <Button onClick={toggleOpen}>{open? "see lesss" : "see more"}</Button>
         </section>
