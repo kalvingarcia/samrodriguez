@@ -40,6 +40,11 @@ const useStyles = tss.create(({theme, scrolled, hovered}) => ({
             }
         }
     },
+    hamburger: {
+        display: "flex",
+        alignItems: "center",
+        gap: "20px"
+    },
     navlinks: {
         display: "flex",
         alignItems: "center",
@@ -49,6 +54,16 @@ const useStyles = tss.create(({theme, scrolled, hovered}) => ({
 
 export default function Header({}) {
     const {darkMode, toggleDarkMode} = useDarkMode();
+    const handleDarkMode = () => {
+        document.cookie = `
+            samPortfolioDarkMode=${!darkMode};
+            domain=samrodriguez.co;
+            max-age=3156000000;
+            samesite=strict;
+            secure;
+        `;
+        toggleDarkMode();
+    };
 
     const [hovered, setHovered] = useState(false);
     const [scrolled, setScrolled] = useState(false);
@@ -72,11 +87,13 @@ export default function Header({}) {
                         <Icon className="icon" iconClass="sam-icons" icon="logo" />
                         <Label className="text">am rodriguez</Label>
                     </div>
-                    <div className={classes.navlinks}>
-                        <Label><a href="#about">about</a></Label>
-                        <Label><a href="#projects">work</a></Label>
-                        <Label><a href="#contact">contact</a></Label>
-                        <IconButton icon={darkMode? "dark_mode" : "light_mode"} role="tertiary" appearance='tonal' onClick={toggleDarkMode} />
+                    <div className={classes.hamburger}>
+                        <div className={classes.navlinks}>
+                            <Label><a href="#about">about</a></Label>
+                            <Label><a href="#projects">work</a></Label>
+                            <Label><a href="#contact">contact</a></Label>
+                        </div>
+                        <IconButton icon={darkMode? "dark_mode" : "light_mode"} role="tertiary" appearance='tonal' onClick={handleDarkMode} />
                     </div>
                 </div>
             </header>

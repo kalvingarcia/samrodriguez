@@ -17,8 +17,12 @@ const flax = "#efe196";
 const lilac ="#bbacd5";
 
 function App() {
+    const darkModeDefaut = document.cookie.split("; ").find(row => row.startsWith("samPortfolioDarkMode="))
+        ?.split("=")[1];
+
     return (
         <ThemeProvider 
+            darkModeDefault={darkModeDefaut?? true}
             palettePresets={{default: {
                 primary: lightBlue,
                 secondary: frenchGray,
