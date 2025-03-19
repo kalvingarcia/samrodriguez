@@ -1,46 +1,60 @@
 import React, {useEffect, useState} from 'react';
 import {tss} from './common/theme';
 import Image from '../components/common/image';
+import { Label } from './common/typography';
+import useContainer from './common/hooks/container';
+import useProject from './hooks/project';
 
-const useStyles = tss.create(({theme, contentSize}) => ({
+const useStyles = tss.create(({theme, hovered}) => ({
     project: {
-        width: "contentSize",
+        position: "relative",
         height: "auto",
         aspectRatio: 1,
-        backgroundColor: theme.neutral.containerLowest.hex()
+        backgroundColor: theme.neutral.containerLowest.hex(),
+        borderRadius: hovered? "50% 0%" : 0,
+        transition: "border-radius 300ms",
+        overflow: "hidden"
     },
     thumbnail: {
         width: "100%",
         height: "100%"
+    },
+    label: {
+        position: "absolute",
+        inset: "0",
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: theme.neutral.containerLowest.alpha(0.8).hexa(),
+        opacity: hovered? 1 : 0,
+        transition: "opacity 300ms ease-in-out"
     }
 }));
 
-export default function Project({directory}) {
+export default function Project({directory, name, type}) {
     const [loading, setLoading] = useState(true);
     const [image, setImage] = useState(undefined);
-    const [contentSize, setContentSize] = useState();
     useEffect(() => {
         (async () => {
             setLoading(true);
             setImage((await import(`../../public/images/projects/${directory}/thumbnail.jpg`)).default);
             setLoading(false);
         })();
-
-        const checkWindowSize = () => {
-            const width = Math.min(1000, window.innerWidth);
-            setContentSize(width / 3);
-            console.log(width / 3);
-        };
-        checkWindowSize();
-
-        window.addEventListener("resize", checkWindowSize);
-        return () => window.removeEventListener("resize", checkWindowSize);
     }, []);
 
-    const {classes} = useStyles({contentSize})
+    const {Container} = useContainer();
+    const {openProject} = useProject();
+
+    const [hovered, setHovered] = useState(false);
+    const {classes} = useStyles({hovered})
     return (
-        <div className={classes.project}>
+        <div className={classes.project} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} onClick={() => openProject(directory)}>
             {!loading && image && <Image className={classes.thumbnail} source={image} alt="Project link for opening project info." />}
+            <Container role="neutral" type="container" >
+                <Label className={classes.label}>{type}: {name}</Label>
+            </Container>
         </div>
     )
 }
