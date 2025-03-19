@@ -30,7 +30,6 @@ const useStyles = tss.create(({theme, role, type, appearance, containerRole, rip
         display: "flex",
         justifyContent: "center",
         gap: 5,
-        alignSelf: 'flex-start',
 
         backgroundColor: appearance === "text" || appearance === "outlined"? "transparent" : theme[role][appearance === "filled"? "accent" : "container"].hex(),
         "&::after": {
