@@ -34,9 +34,9 @@ const useStyles = tss.create(({theme, scrolled, hovered, open}) => ({
         },
         "& .text": {
             fontFamily: "var(--display-font)",
-            fontSize: "1.25rem",
+            fontSize: "1.45rem",
             marginLeft: "-20px",
-            marginTop: "-5px",
+            marginTop: "-7px"
         }
     },
     hamburger: {

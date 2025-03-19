@@ -10,11 +10,11 @@ import CaustenBold from '../public/fonts/causten-bold.woff2';
 import CaustenExtraBold from '../public/fonts/causten-extra-bold.woff2';
 import SamIcons from '../public/fonts/sam-icons.woff';
 
-const lightBlue = "#b0dbe1";
-const frenchGray = "#c2c7df"
-const pinkLavender = "#edb7e2";
-const flax = "#efe196";
-const lilac ="#bbacd5";
+const emerald = "#4AC282";
+const cambridge = "#8EB9A8";
+const pale = "#E6DBE7";
+const teaRose = "#EDB7B9";
+const africanViolet = "#BB85B4";
 
 function App() {
     const darkModeDefault = document.cookie.split("; ").find(row => row.startsWith("samPortfolioDarkMode="))
@@ -24,11 +24,11 @@ function App() {
         <ThemeProvider 
             darkModeDefault={Boolean(darkModeDefault?? true)}
             palettePresets={{default: {
-                primary: lightBlue,
-                secondary: frenchGray,
-                tertiary: pinkLavender,
-                error: flax,
-                neutral: lilac
+                primary: emerald,
+                secondary: cambridge,
+                tertiary: pale,
+                error: teaRose,
+                neutral: africanViolet
             }}}
         >
             <GlobalStyles styles={`
