@@ -14,6 +14,7 @@ const useStyles = tss.create(({theme, scrolled, hovered, open}) => ({
         top: 0,
         zIndex: 1000,
         backgroundColor: scrolled || hovered || open? theme.neutral.containerLowest.hex() : theme.neutral.containerHighest.hex(),
+        transition: "background-color 300ms ease-in-out"
     },
     content: {
         margin: "auto",
@@ -68,7 +69,7 @@ const useStyles = tss.create(({theme, scrolled, hovered, open}) => ({
                 aspectRatio: 1,
                 flexDirection: "column",
                 backgroundColor: theme.primary.container.hex(),
-                clipPath: open? "circle(500px at 100% 0)" : "circle(0 at 100% 0)",
+                clipPath: open? "circle(min(100%, 500px) at 100% 0)" : "circle(0 at 100% 0)",
                 transition: "clip-path 300ms ease-in-out",
 
                 "& > *": {
@@ -128,18 +129,18 @@ export default function Header({}) {
                     <Label className="text">am rodriguez</Label>
                 </div>
                 <div className={classes.hamburger}>
-                    <div className="scrim" onClick={() => setOpen(false)} />
+                    <div className="scrim" onClick={() => {setOpen(false); document.getElementById("root").classList.remove(classes.scrollLock)}} />
                     <IconButton className="button" icon={open? "close" : "menu"} role={open? "tertiary" : "primary"} onClick={toggleHamburger} />
-                    <Container role={open? "primary" : "neutral"} type="container">
-                        <div className="container">
+                    <div className="container">
+                        <Container role={open? "primary" : "neutral"} type="container">
                             <div className={classes.navlinks}>
                                 <Label><a href="#about">about</a></Label>
                                 <Label><a href="#projects">work</a></Label>
                                 <Label><a href="#contact">contact</a></Label>
                             </div>
                             <IconButton className="darkModeButton" icon={darkMode? "dark_mode" : "light_mode"} role="tertiary" appearance='outlined' onClick={handleDarkMode} />
-                        </div>
-                    </Container>
+                        </Container>
+                    </div>
                 </div>
             </div>
         </header>
