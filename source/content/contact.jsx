@@ -76,7 +76,7 @@ export default function Contact({}) {
             <div className={classes.content}>
                 <div className={classes.left}>
                     <Subtitle>any inquiries!</Subtitle>
-                    <Body>send any inquiries about my availablility or my projects to contact@samrodriguez.co.</Body>
+                    <Body>send any inquiries about my availablility or my projects to <a href="mailto:contact@samrodriguez.co">contact@samrodriguez.co</a>.</Body>
                 </div>
                 <div className={classes.form}>
                     <Form id="contact-form">
