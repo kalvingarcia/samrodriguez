@@ -6,6 +6,7 @@ import IconButton from '../components/common/iconography';
 import useProject from '../components/hooks/project';
 import useContainer from '../components/common/hooks/container';
 import projects from '../../public/projects.json';
+import Transition from '../components/common/transition';
 
 const ROW_COUNT = 3;
 
@@ -63,14 +64,25 @@ const useStyles = tss.create(({theme, open, contentHeight, contentSize, openProj
             zIndex: 0
         },
         "& .container": {
-            padding: "40px",
             position: "fixed",
             left: 0,
             bottom: 0,
             width: "100%",
-            height: openProject? "90%" : 0,
-            transition: "height 300ms ease-in-out",
+            height: "100%",
+            maxHeight: "90%",
+            transition: "max-height 300ms ease-in-out",
             backgroundColor: theme.primary.container.hex(),
+
+            "&.enter": {
+                maxHeight: 0
+            },
+            "&.exit": {
+                maxHeight: 0
+            },
+
+            "& .info": {
+                padding: "40px"
+            }
         }
     }
 }));
@@ -137,17 +149,20 @@ export default function Projects({}) {
                 {rows}
             </div>
             <IconButton onClick={() => setOpen(!open)} icon={open? "keyboard_arrow_up" : "keyboard_arrow_down"} />
-            {openProject && 
-                <div className={classes.project}>
-                    <div className="scrim" onClick={handleClose} />
-                    <Container role="primary" type="container">
-                        <div className="container">
-                            <Title>{projectContent.name}</Title>
-                            <Subtitle>{projectContent.type}</Subtitle>
-                        </div>
-                    </Container>
-                </div>
-            }
+            <div className={classes.project}>
+                <div className="scrim" onClick={handleClose} />
+                <Transition show={openProject} enter="enter" exit="exit">
+                    <div className="container">
+                        <Container role="primary" type="container">
+                            <div className="info">
+                                <Title>{projectContent?.name}</Title>
+                                <Subtitle>{projectContent?.type}</Subtitle>
+                            </div>
+                            <div className="gallery" />
+                        </Container>
+                    </div>
+                </Transition>
+            </div>
         </section>
     );
 }
