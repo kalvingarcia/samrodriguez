@@ -52,9 +52,7 @@ export default function Project({directory, name, type}) {
     return (
         <div className={classes.project} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} onClick={() => openProject(directory)}>
             {!loading && image && <Image className={classes.thumbnail} source={image} alt="Project link for opening project info." />}
-            <Container role="neutral" type="container" >
-                <Label className={classes.label}>{type}: {name}</Label>
-            </Container>
+            <Label className={classes.label}>{type}: {name}</Label>
         </div>
     )
 }
