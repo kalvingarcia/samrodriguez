@@ -1,8 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {tss} from './common/theme';
 import Image from '../components/common/image';
 import { Label } from './common/typography';
-import useContainer from './common/hooks/container';
 import useProject from './hooks/project';
 
 const useStyles = tss.create(({theme, hovered}) => ({
@@ -34,24 +33,12 @@ const useStyles = tss.create(({theme, hovered}) => ({
 }));
 
 export default function Project({directory, name, type}) {
-    const [loading, setLoading] = useState(true);
-    const [image, setImage] = useState(undefined);
-    useEffect(() => {
-        (async () => {
-            setLoading(true);
-            setImage((await import(`../../public/images/projects/${directory}/thumbnail.jpg`)).default);
-            setLoading(false);
-        })();
-    }, []);
-
-    const {Container} = useContainer();
     const {openProject} = useProject();
-
     const [hovered, setHovered] = useState(false);
     const {classes} = useStyles({hovered})
     return (
         <div className={classes.project} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} onClick={() => openProject(directory)}>
-            {!loading && image && <Image className={classes.thumbnail} source={image} alt="Project link for opening project info." />}
+            <Image className={classes.thumbnail} source={`./src/public/images/projects/${directory}/thumbnail.jpg`} alt="Project link for opening project info." />
             <Label className={classes.label}>{type}: {name}</Label>
         </div>
     )
