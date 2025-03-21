@@ -1,4 +1,4 @@
-import React from 'react';
+"use client"
 import {tss} from './common/theme';
 import useContainer from './common/hooks/container';
 import {Label}  from './common/typography';

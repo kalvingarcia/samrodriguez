@@ -1,5 +1,4 @@
-
-import React from 'react';
+"use client"
 import {tss} from './theme';
 import useContainer from './hooks/container';
 import useRippleEffect from './hooks/ripple';

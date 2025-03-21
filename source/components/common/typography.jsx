@@ -1,5 +1,5 @@
 "use client"
-import React, {forwardRef} from "react";
+import {forwardRef} from "react";
 import {tss} from "./theme";
 import useContainer from "./hooks/container";
 

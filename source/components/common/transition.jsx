@@ -1,3 +1,4 @@
+"use client"
 import {Children, cloneElement, useEffect, useRef, useState} from "react";
 
 const ENTER_EXIT_ERROR_MESSAGE = "Both enter and exit props need to be defined";
