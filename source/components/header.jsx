@@ -7,7 +7,7 @@ import {Label} from './common/typography';
 import IconButton, {Icon} from './common/iconography';
 
 const cookieOptions = {
-    domain: "kalvingarcia.com", 
+    domain: "samrodriguez.co", 
     maxAge: 3156000000,
     sameSite: true,
     secure: true
@@ -138,7 +138,7 @@ export default function Header({}) {
                     <Label className="text">am rodriguez</Label>
                 </div>
                 <div className={classes.hamburger}>
-                    <div className="scrim" onClick={() => {setOpen(false); document.getElementById("root").classList.remove(classes.scrollLock)}} />
+                    <div className="scrim" onClick={() => {setOpen(false); document.body.classList.remove(classes.scrollLock)}} />
                     <IconButton className="button" icon={open? "close" : "menu"} role={open? "tertiary" : "primary"} onClick={toggleHamburger} />
                     <div className="container">
                         <Container role={open? "primary" : "neutral"} type="container">
