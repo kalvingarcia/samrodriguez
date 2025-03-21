@@ -1,32 +1,66 @@
 [
     {
         "directory": "santurce-event",
-        "name": "santurce event",
-        "type": "branding"
+        "name": "santurce: sabor y arte",
+        "type": "Illustration and Event Design",
+        "description": "\"Santurce: Sabor y Arte\" is a fictional event concept inspired by the vibrant culture of Santurce, Puerto Rico. The event is a showcase of Puerto Rican music, food, and art.\n\nFor this project, I designed an event ticket and promotional poster using Adobe Illustrator, incorporating key cultural elements such as the beach, a cuatro (a traditional Puerto Rican stringed instrument), and Santurce’s iconic colorful houses. I brought the design to life by  animating the poster in After Effects, adding movement that enhances the energy and rhythm of the event.",
+        "media": [
+            {
+                "source": "animated-poster.mp4",
+                "alt": "Animated event poster.",
+                "type": "video"
+            },
+            {
+                "source": "finished-poster.png",
+                "alt": "Static event poster.",
+                "type": "image"
+            }
+        ]
     },
     {
         "directory": "tender-is-the-flesh",
         "name": "tender is the flesh",
-        "type": "book cover"
+        "type": "Book Cover Design",
+        "description": "This project presents a series of alternative cover designs for Tender is the Flesh by Agustina Bazterrica, a novel that explores themes of cannibalism and morality. Each design features a distinct visual interpretation of these unsettling themes, aiming to balance subtlety and emotional impact.\n\nThe primary cover features a delicate font contrasted by a blood-stained plate, subtly hinting at the novel’s horrific themes.\n\nOne variation mimics the appearance of a supermarket meat package ,showcasing how the commodification of human flesh is central to the story.\n\nAnother design depicts a human-shaped meat diagram with bold typography, emphasizing the novel’s gruesome and unsettling subject matter.",
+        "media": [
+            {
+                "source": "final-book.jpg",
+                "alt": "Final book design.",
+                "type": "image"
+            },
+            {
+                "source": "three-books.png",
+                "alt": "Book design options.",
+                "type": "image"
+            },
+            {
+                "source": "book-jacket-design.jpg",
+                "alt": "Final book design spread.",
+                "type": "image"
+            }
+        ]
     },
     {
-        "directory": "santurce-event",
-        "name": "santurce event",
-        "type": "branding"
-    },
-    {
-        "directory": "tender-is-the-flesh",
-        "name": "tender is the flesh",
-        "type": "book cover"
-    },
-    {
-        "directory": "santurce-event",
-        "name": "santurce event",
-        "type": "branding"
-    },
-    {
-        "directory": "tender-is-the-flesh",
-        "name": "tender is the flesh",
-        "type": "book cover"
+        "directory": "teony",
+        "name": "teony",
+        "type": "Branding and Packaging Design",
+        "description": "Teaony is a fictional tea brand inspired by the peony flower, known for its delicate sweetness and immune-boosting properties when used in tea.\n\nThis project was a personal passion, where I developed everything from the brand concept and name to the visual identity and packaging. This project stemmed from my love of flowers and tea. I designed a floral logo with a delicate type that reflects the elegant and soothing nature of peonies\n\nI designed two distinct tea blends:\nThe \"Calm Blend,\" infused with peony and chamomile, features a soft purple-blue color to convey relaxation and tranquility.\nThe \"Energy Blend\" is a vibrant yellow, symbolizing warmth and an invigorating burst of energy.",
+        "media": [
+            {
+                "source": "tea-bags.jpg",
+                "alt": "Tea bag packaging design",
+                "type": "image"
+            },
+            {
+                "source": "tea-can.png",
+                "alt": "Tea can packaging design",
+                "type": "image"
+            },
+            {
+                "source": "logo.jpg",
+                "alt": "Tea company logo design",
+                "type": "image"
+            }
+        ]
     }
 ]
