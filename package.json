@@ -1,36 +1,21 @@
 {
-    "type": "module",
-    "name": "samrodriguez",
-    "version": "1.0.0",
-    "description": "Sam Rodriguez's portfolio website.",
-    "main": "app.jsx",
+    "name": "kalvin-portfolio",
+    "version": "0.1.0",
+    "private": true,
     "scripts": {
-        "build": "webpack",
-        "start": "webpack serve",
-        "dev": "npm run build && npm run start"
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
     },
-    "devDependencies": {
-        "@babel/cli": "^7.25.9",
-        "@babel/core": "^7.26.0",
-        "@babel/preset-env": "^7.26.0",
-        "@babel/preset-react": "^7.25.9",
-        "@svgr/webpack": "^8.1.0",
-        "babel-loader": "^9.2.1",
-        "color": "^5.0.0",
-        "copy-webpack-plugin": "^13.0.0",
-        "css-loader": "^6.11.0",
-        "file-loader": "^6.2.0",
-        "html-webpack-plugin": "^5.6.3",
-        "react": "^18.3.1",
-        "react-dom": "^18.3.1",
-        "style-loader": "^3.3.4",
-        "tss-react": "^4.9.15",
-        "webpack": "^5.96.1",
-        "webpack-cli": "^5.1.4",
-        "webpack-dev-server": "^5.1.0"
-    },
-    "author": "Kalvin Garcia",
     "dependencies": {
-        "material-symbols": "^0.28.2"
+        "@emotion/react": "^11.11.4",
+        "color": "^4.2.3",
+        "cookies-next": "^4.2.1",
+        "material-symbols": "^0.28.2",
+        "next": "^14.0.2",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "tss-react": "^4.9.10"
     }
 }

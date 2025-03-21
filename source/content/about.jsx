@@ -1,4 +1,4 @@
-import React from 'react';
+"use client"
 import {tss} from '../components/common/theme';
 import {Body, Display} from '../components/common/typography';
 import Button from '../components/common/button';
@@ -59,7 +59,7 @@ export default function About({}) {
         <section id="about" className={classes.section}>
             <div className={classes.content}>
                 <div className={classes.container}>
-                    <Image className={classes.image} source="./src/public/images/profile.jpg" alt="Portraiit of Sam" />
+                    <Image className={classes.image} source="/images/profile.jpg" alt="Portraiit of Sam" />
                     <div className={classes.bio}>
                         <Display className={classes.intro}>hi, i'm sam!</Display>
                         <Body>i'm a graphic designer who is passionate about branding, packaging, and motion graphics.</Body>

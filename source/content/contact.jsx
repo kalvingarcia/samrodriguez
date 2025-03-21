@@ -1,4 +1,4 @@
-import React from 'react';
+"use client"
 import {tss} from '../components/common/theme';
 import Form from "../components/common/form";
 import TextField from "../components/common/text-field";

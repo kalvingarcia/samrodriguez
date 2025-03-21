@@ -1,4 +1,5 @@
-import React, {useEffect, useState} from 'react';
+"use client"
+import {useEffect, useState} from 'react';
 import {tss} from '../components/common/theme';
 import {Body, Heading, Subheading, Subtitle, Title} from '../components/common/typography';
 import Project from '../components/project';

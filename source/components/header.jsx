@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+"use client"
+import { useEffect, useState } from 'react';
 import {tss, useDarkMode} from './common/theme';
 import useContainer from './common/hooks/container';
 import {Label} from './common/typography';

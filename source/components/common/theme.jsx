@@ -1,4 +1,5 @@
-import React, {createContext, useContext, useEffect, useRef, useState} from 'react';
+"use client"
+import {createContext, useContext, useEffect, useRef, useState} from 'react';
 import {createTss, GlobalStyles} from 'tss-react';
 import Color from 'color';
 import 'material-symbols';

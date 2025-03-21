@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+"use client"
+import {useState} from 'react';
 import {tss} from './common/theme';
 import Image from '../components/common/image';
 import { Label } from './common/typography';
@@ -38,8 +39,8 @@ export default function Project({directory, name, type}) {
     const {classes} = useStyles({hovered})
     return (
         <div className={classes.project} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} onClick={() => openProject(directory)}>
-            <Image className={classes.thumbnail} source={`./src/public/images/projects/${directory}/thumbnail.jpg`} alt="Project link for opening project info." />
-            <Label className={classes.label}>{type}: {name}</Label>
+            <Image className={classes.thumbnail} source={`/images/projects/${directory}/thumbnail.jpg`} alt="Project link for opening project info." />
+            <Label className={classes.label}>{name}</Label>
         </div>
     )
 }

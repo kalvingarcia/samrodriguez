@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+"use client"
 import {tss} from './theme';
 
 const useStyles = tss.create(({theme}) => ({
