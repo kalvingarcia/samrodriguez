@@ -73,7 +73,7 @@ const useStyles = tss.create(({theme, open, contentHeight, contentSize, openProj
             width: "100%",
             maxHeight: "100%",
             transition: "max-height 300ms ease-in-out",
-            backgroundColor: theme.primary.container.hex(),
+            backgroundColor: theme.primary.accent.hex(),
             overflow: "auto",
 
             "&.enter": {
@@ -169,8 +169,8 @@ export default function Projects({}) {
             <div className={classes.project}>
                 <Transition show={openProject} enter="enter" exit="exit">
                     <div className="container">
-                        <Container role="primary" type="container">
-                            <IconButton className="close" icon="close" role="tertiary" appearance="outlined" onClick={handleClose} />
+                        <Container role="primary" type="accent">
+                            <IconButton className="close" icon="close" role="tertiary" appearance="tonal" onClick={handleClose} />
                             <div className="info">
                                 <Title>{projectContent?.name}</Title>
                                 <Subtitle>{projectContent?.type}</Subtitle>
@@ -179,9 +179,9 @@ export default function Projects({}) {
                             <div className="gallery">
                                 {projectContent?.media.map(({source, alt, type}, index) => (
                                     type === "video"? 
-                                        <Video key={index} source={`./src/public/images/projects/${projectContent?.directory}/${source}`} controls muted />
+                                        <Video key={index} source={`/images/projects/${projectContent?.directory}/${source}`} controls muted />
                                         :
-                                        <Image key={index} source={`./src/public/images/projects/${projectContent?.directory}/${source}`} alt={alt} />
+                                        <Image key={index} source={`/images/projects/${projectContent?.directory}/${source}`} alt={alt} />
                                 ))}
                             </div>
                         </Container>
