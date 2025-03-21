@@ -22,8 +22,7 @@ const useStyles = tss.create(({theme, scrolled, hovered, open}) => ({
         padding: "0px 40px",
         top: 0,
         zIndex: 1000,
-        backgroundColor: scrolled || hovered || open? theme.neutral.containerLowest.hex() : theme.neutral.containerHighest.hex(),
-        transition: "background-color 300ms ease-in-out"
+        backgroundColor: scrolled || hovered || open? theme.neutral.containerLowest.hex() : theme.neutral.containerHighest.hex()
     },
     content: {
         margin: "auto",
@@ -114,7 +113,7 @@ export default function Header({}) {
         setScrolled((target.scrollTop > 0));
     };
     useEffect(() => {
-        const root = document.getElementById("root");
+        const root = document.body;
         root?.addEventListener("scroll", checkScroll);
         return () => root?.removeEventListener("scroll", checkScroll);
     }, []);
