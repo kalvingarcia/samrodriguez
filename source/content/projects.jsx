@@ -1,14 +1,11 @@
 "use client"
 import {useEffect, useState} from 'react';
 import {tss} from '../components/common/theme';
-import {Body, Heading, Subheading, Subtitle, Title} from '../components/common/typography';
+import {Title} from '../components/common/typography';
 import Project from '../components/project';
+import ProjectContent from '../components/project-content';
 import IconButton from '../components/common/iconography';
 import useProject from '../components/hooks/project';
-import useContainer from '../components/common/hooks/container';
-import Transition from '../components/common/transition';
-import Image from '../components/common/image';
-import Video from '../components/common/video';
 import projects from '../../public/projects.json';
 
 const ROW_COUNT = 3;
@@ -52,55 +49,6 @@ const useStyles = tss.create(({theme, open, contentHeight, contentSize, openProj
         "@media (max-width: 1000px)": {
             maxHeight: contentSize * ROW_COUNT + 40,
             flexDirection: "column"
-        }
-    },
-    project: {
-        zIndex: 1000,
-
-        "& .scrim": {
-            display: openProject? "block" : "none",
-            position: "fixed",
-            width: "100vw",
-            height: "100vh",
-            inset: 0,
-            backgroundColor: theme.neutral.shadow.alpha(0.5).hexa(),
-            zIndex: 0
-        },
-        "& .container": {
-            position: "fixed",
-            left: 0,
-            bottom: 0,
-            width: "100%",
-            maxHeight: "100%",
-            transition: "max-height 300ms ease-in-out",
-            backgroundColor: theme.primary.container.hex(),
-            overflow: "auto",
-
-            "&.enter": {
-                maxHeight: 0
-            },
-            "&.exit": {
-                maxHeight: 0
-            },
-
-            "& .close": {
-                position: "absolute",
-                top: "40px",
-                right: "40px",
-                zIndex: 1000
-            },
-            "& .info": {
-                padding: "40px",
-
-                "& .description": {
-                    fontFamily: "inherit",
-                    textWrap: "pretty"
-                }
-            },
-            "& .gallery": {
-                margin: "auto",
-                maxWidth: "1000px"
-            }
         }
     }
 }));
@@ -157,8 +105,6 @@ export default function Projects({}) {
         return () => window.removeEventListener("resize", checkWindowSize);
     }, []);
 
-    const {Container} = useContainer();
-
     return (
         <section id="projects" className={classes.section}>
             <Title>{open? "all projects" : "featured projects"}</Title>
@@ -166,28 +112,7 @@ export default function Projects({}) {
                 {rows}
             </div>
             <IconButton onClick={() => setOpen(!open)} icon={open? "keyboard_arrow_up" : "keyboard_arrow_down"} />
-            <div className={classes.project}>
-                <Transition show={openProject} enter="enter" exit="exit">
-                    <div className="container">
-                        <Container role="primary" type="container">
-                            <IconButton className="close" icon="close" role="tertiary" onClick={handleClose} />
-                            <div className="info">
-                                <Title>{projectContent?.name}</Title>
-                                <Subtitle>{projectContent?.type}</Subtitle>
-                                <Body><pre className='description'>{projectContent?.description}</pre></Body>
-                            </div>
-                            <div className="gallery">
-                                {projectContent?.media.map(({source, alt, type}, index) => (
-                                    type === "video"? 
-                                        <Video key={index} source={`/optimized-media/projects/${projectContent?.directory}/${source}`} controls muted />
-                                        :
-                                        <Image key={index} source={`/optimized-media/projects/${projectContent?.directory}/${source}`} alt={alt} />
-                                ))}
-                            </div>
-                        </Container>
-                    </div>
-                </Transition>
-            </div>
+            <ProjectContent show={openProject} content={projectContent} handleClose={handleClose} />
         </section>
     );
 }
