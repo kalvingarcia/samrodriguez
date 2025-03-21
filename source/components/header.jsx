@@ -118,8 +118,8 @@ export default function Header({}) {
 
     const toggleHamburger = () => {
         setOpen(!open);
-        if(!open) document.getElementById("root").classList.add(classes.scrollLock);
-        else document.getElementById("root").classList.remove(classes.scrollLock)
+        if(!open) document.body.classList.add(classes.scrollLock);
+        else document.body.classList.remove(classes.scrollLock)
     };
 
     return (
