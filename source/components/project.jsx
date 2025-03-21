@@ -27,6 +27,8 @@ const useStyles = tss.create(({theme, hovered}) => ({
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        fontSize: "1.5rem",
+        fontStyle: "bold",
         backgroundColor: theme.neutral.containerLowest.alpha(0.8).hexa(),
         opacity: hovered? 1 : 0,
         transition: "opacity 300ms ease-in-out"
