@@ -1,9 +1,17 @@
 "use client"
 import { useEffect, useState } from 'react';
+import {setCookie} from 'cookies-next';
 import {tss, useDarkMode} from './common/theme';
 import useContainer from './common/hooks/container';
 import {Label} from './common/typography';
 import IconButton, {Icon} from './common/iconography';
+
+const cookieOptions = {
+    domain: "kalvingarcia.com", 
+    maxAge: 3156000000,
+    sameSite: true,
+    secure: true
+}
 
 const useStyles = tss.create(({theme, scrolled, hovered, open}) => ({
     scrollLock: {
@@ -96,7 +104,7 @@ const useStyles = tss.create(({theme, scrolled, hovered, open}) => ({
 export default function Header({}) {
     const {darkMode, toggleDarkMode} = useDarkMode();
     const handleDarkMode = () => {
-        document.cookie = `samPortfolioDarkMode=${!darkMode}; domain=samrodriguez.co; max-age=3156000000; samesite=strict; secure`;
+        setCookie("samPortfolioDarkMode", !darkMode, cookieOptions);
         toggleDarkMode();
     };
 

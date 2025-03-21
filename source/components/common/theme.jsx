@@ -1,5 +1,6 @@
 "use client"
 import {createContext, useContext, useEffect, useRef, useState} from 'react';
+import {NextAppDirEmotionCacheProvider} from "tss-react/next/appDir";
 import {createTss, GlobalStyles} from 'tss-react';
 import Color from 'color';
 import 'material-symbols';
@@ -240,11 +241,13 @@ export default function ThemeProvider({darkModeDefault = false, themeDefault = "
     };
 
     return (
-        <ThemeContext.Provider value={{theme, palettes: paletteDictionary.current, changeTheme, addPalette, removePalette}}>
-            <DarkModeContext.Provider value={{darkMode, toggleDarkMode}}>
-                <GlobalStyles styles={defaults} />
-                {children}
-            </DarkModeContext.Provider>
-        </ThemeContext.Provider>
+        <NextAppDirEmotionCacheProvider options={{key: "css"}}>
+            <ThemeContext.Provider value={{theme, palettes: paletteDictionary.current, changeTheme, addPalette, removePalette}}>
+                <DarkModeContext.Provider value={{darkMode, toggleDarkMode}}>
+                    <GlobalStyles styles={defaults} />
+                    {children}
+                </DarkModeContext.Provider>
+            </ThemeContext.Provider>
+        </NextAppDirEmotionCacheProvider>
     );
 }

@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react';
 
 export default function useProject() {
     const getProjectFromURL = () => new URL(window.location.href).searchParams.get("open")?? undefined;
-    const [project, setProject] = useState(getProjectFromURL);
+    const [project, setProject] = useState(undefined);
 
     const updateURL = (directory) => {
         const url = new URL(window.location.href);
@@ -18,6 +18,7 @@ export default function useProject() {
     };
 
     useEffect(() => {
+        setProject(getProjectFromURL);
         const handleLocationChange = () => {
             setProject(getProjectFromURL()); // Update state with latest URL
         };

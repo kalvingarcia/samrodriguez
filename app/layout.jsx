@@ -1,5 +1,6 @@
 "use client"
 import Local from "next/font/local";
+import {getCookie} from "cookies-next";
 import {GlobalStyles} from 'tss-react';
 import Header from '@/source/components/header';
 import Footer from '@/source/components/footer';
@@ -71,8 +72,6 @@ const bodyFont = Local({
 });
 
 export default function Layout({children}) {
-    console.log(document.cookie);
-    const darkModeDefault = Boolean(document.cookie.split("; ").find(row => row.startsWith("samPortfolioDarkMode="))?.split("=")[1]?? true);
     return (
         <html lang="en" className={[samIconsFont.variable, displayFont.variable, titleFont.variable, headingFont.variable, bodyFont.variable].join(" ")}>
             <body>
@@ -98,7 +97,7 @@ export default function Layout({children}) {
                     }
                 `} />
                 <ThemeProvider 
-                    darkModeDefault={darkModeDefault}
+                    darkModeDefault={(/true/i).test(getCookie("samPortfolioDarkMode"))}
                     palettePresets={{default: {
                         primary: emerald,
                         secondary: cambridge,
