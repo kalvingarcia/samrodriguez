@@ -179,9 +179,9 @@ export default function Projects({}) {
                             <div className="gallery">
                                 {projectContent?.media.map(({source, alt, type}, index) => (
                                     type === "video"? 
-                                        <Video key={index} source={`/images/projects/${projectContent?.directory}/${source}`} controls muted />
+                                        <Video key={index} source={`/optimized-media/projects/${projectContent?.directory}/${source}`} controls muted />
                                         :
-                                        <Image key={index} source={`/images/projects/${projectContent?.directory}/${source}`} alt={alt} />
+                                        <Image key={index} source={`/optimized-media/projects/${projectContent?.directory}/${source}`} alt={alt} />
                                 ))}
                             </div>
                         </Container>

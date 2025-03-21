@@ -59,7 +59,7 @@ export default function About({}) {
         <section id="about" className={classes.section}>
             <div className={classes.content}>
                 <div className={classes.container}>
-                    <Image className={classes.image} source="/images/profile.jpg" alt="Portraiit of Sam" />
+                    <Image className={classes.image} source="/optimized-media/profile.webp" alt="Portraiit of Sam" />
                     <div className={classes.bio}>
                         <Display className={classes.intro}>hi, i'm sam!</Display>
                         <Body>i'm a graphic designer who is passionate about branding, packaging, and motion graphics.</Body>
