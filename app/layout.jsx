@@ -1,4 +1,5 @@
 "use client"
+import {useEffect, useState} from "react";
 import Local from "next/font/local";
 import {getCookie} from "cookies-next";
 import {GlobalStyles} from 'tss-react';
@@ -72,6 +73,11 @@ const bodyFont = Local({
 });
 
 export default function Layout({children}) {
+    const [isClient, setIsClient] = useState(false);
+    useEffect(() => {
+        setIsClient(true);
+    }, []);
+
     return (
         <html lang="en" className={[samIconsFont.variable, displayFont.variable, titleFont.variable, headingFont.variable, bodyFont.variable].join(" ")}>
             <body>
@@ -96,20 +102,22 @@ export default function Layout({children}) {
                         font-feature-settings: 'liga';
                     }
                 `} />
-                <ThemeProvider 
-                    darkModeDefault={(/true/i).test(getCookie("samPortfolioDarkMode"))}
-                    palettePresets={{default: {
-                        primary: emerald,
-                        secondary: cambridge,
-                        tertiary: pale,
-                        error: teaRose,
-                        neutral: africanViolet
-                    }}}
-                >
-                    <Header />
-                    {children}
-                    <Footer />
-                </ThemeProvider>
+                {isClient &&
+                    <ThemeProvider 
+                        darkModeDefault={(/true/i).test(getCookie("samPortfolioDarkMode"))}
+                        palettePresets={{default: {
+                            primary: emerald,
+                            secondary: cambridge,
+                            tertiary: pale,
+                            error: teaRose,
+                            neutral: africanViolet
+                        }}}
+                    >
+                        <Header />
+                        {children}
+                        <Footer />
+                    </ThemeProvider>
+                }
             </body>
         </html>
     );
