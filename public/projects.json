@@ -11,7 +11,7 @@
                 "type": "video"
             },
             {
-                "source": "finished-poster.png",
+                "source": "finished-poster.webp",
                 "alt": "Static event poster.",
                 "type": "image"
             }
@@ -24,17 +24,17 @@
         "description": "This project presents a series of alternative cover designs for Tender is the Flesh by Agustina Bazterrica, a novel that explores themes of cannibalism and morality. Each design features a distinct visual interpretation of these unsettling themes, aiming to balance subtlety and emotional impact.\n\nThe primary cover features a delicate font contrasted by a blood-stained plate, subtly hinting at the novel’s horrific themes.\n\nOne variation mimics the appearance of a supermarket meat package ,showcasing how the commodification of human flesh is central to the story.\n\nAnother design depicts a human-shaped meat diagram with bold typography, emphasizing the novel’s gruesome and unsettling subject matter.",
         "media": [
             {
-                "source": "final-book.jpg",
+                "source": "final-book.webp",
                 "alt": "Final book design.",
                 "type": "image"
             },
             {
-                "source": "three-books.png",
+                "source": "three-books.webp",
                 "alt": "Book design options.",
                 "type": "image"
             },
             {
-                "source": "book-jacket-design.jpg",
+                "source": "book-jacket-design.webp",
                 "alt": "Final book design spread.",
                 "type": "image"
             }
@@ -47,17 +47,17 @@
         "description": "Teaony is a fictional tea brand inspired by the peony flower, known for its delicate sweetness and immune-boosting properties when used in tea.\n\nThis project was a personal passion, where I developed everything from the brand concept and name to the visual identity and packaging. This project stemmed from my love of flowers and tea. I designed a floral logo with a delicate type that reflects the elegant and soothing nature of peonies\n\nI designed two distinct tea blends:\nThe \"Calm Blend,\" infused with peony and chamomile, features a soft purple-blue color to convey relaxation and tranquility.\nThe \"Energy Blend\" is a vibrant yellow, symbolizing warmth and an invigorating burst of energy.",
         "media": [
             {
-                "source": "tea-bags.jpg",
+                "source": "tea-bags.webp",
                 "alt": "Tea bag packaging design",
                 "type": "image"
             },
             {
-                "source": "tea-can.png",
+                "source": "tea-can.webp",
                 "alt": "Tea can packaging design",
                 "type": "image"
             },
             {
-                "source": "logo.jpg",
+                "source": "logo.webp",
                 "alt": "Tea company logo design",
                 "type": "image"
             }
