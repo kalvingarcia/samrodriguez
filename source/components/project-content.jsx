@@ -63,6 +63,7 @@ export default function ProjectContent({show, content, handleClose}) {
     const {classes} = useStyles({show});
     return (
         <div className={classes.project}>
+            <div className='scrim' />
             <Transition show={show} enter="enter" exit="exit">
                 <div className={classes.container}>
                     <Container role="primary" type="container">
