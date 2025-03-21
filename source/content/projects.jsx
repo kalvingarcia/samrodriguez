@@ -1,12 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import {tss} from '../components/common/theme';
-import {Heading, Subheading, Subtitle, Title} from '../components/common/typography';
+import {Body, Heading, Subheading, Subtitle, Title} from '../components/common/typography';
 import Project from '../components/project';
 import IconButton from '../components/common/iconography';
 import useProject from '../components/hooks/project';
 import useContainer from '../components/common/hooks/container';
-import projects from '../../public/projects.json';
 import Transition from '../components/common/transition';
+import Image from '../components/common/image';
+import Video from '../components/common/video';
+import projects from '../../public/projects.json';
 
 const ROW_COUNT = 3;
 
@@ -68,10 +70,10 @@ const useStyles = tss.create(({theme, open, contentHeight, contentSize, openProj
             left: 0,
             bottom: 0,
             width: "100%",
-            height: "100%",
-            maxHeight: "90%",
+            maxHeight: "100%",
             transition: "max-height 300ms ease-in-out",
             backgroundColor: theme.primary.container.hex(),
+            overflow: "auto",
 
             "&.enter": {
                 maxHeight: 0
@@ -80,8 +82,23 @@ const useStyles = tss.create(({theme, open, contentHeight, contentSize, openProj
                 maxHeight: 0
             },
 
+            "& .close": {
+                position: "absolute",
+                top: "40px",
+                right: "40px",
+                zIndex: 1000
+            },
             "& .info": {
-                padding: "40px"
+                padding: "40px",
+
+                "& .description": {
+                    fontFamily: "inherit",
+                    textWrap: "pretty"
+                }
+            },
+            "& .gallery": {
+                margin: "auto",
+                maxWidth: "1000px"
             }
         }
     }
@@ -99,9 +116,8 @@ export default function Projects({}) {
     };
     useEffect(() => {
         if(project) {
-            console.log(projects.find(({directory}) => directory === project));
-            setProjectContent(projects.find(({directory}) => directory === project));
             setOpenProject(true);
+            setProjectContent(projects.find(({directory}) => directory === project));
         }
     }, [project]);
 
@@ -150,15 +166,23 @@ export default function Projects({}) {
             </div>
             <IconButton onClick={() => setOpen(!open)} icon={open? "keyboard_arrow_up" : "keyboard_arrow_down"} />
             <div className={classes.project}>
-                <div className="scrim" onClick={handleClose} />
                 <Transition show={openProject} enter="enter" exit="exit">
                     <div className="container">
                         <Container role="primary" type="container">
+                            <IconButton className="close" icon="close" role="tertiary" appearance="outlined" onClick={handleClose} />
                             <div className="info">
                                 <Title>{projectContent?.name}</Title>
                                 <Subtitle>{projectContent?.type}</Subtitle>
+                                <Body><pre className='description'>{projectContent?.description}</pre></Body>
                             </div>
-                            <div className="gallery" />
+                            <div className="gallery">
+                                {projectContent?.media.map(({source, alt, type}, index) => (
+                                    type === "video"? 
+                                        <Video key={index} source={`./src/public/images/projects/${projectContent?.directory}/${source}`} controls muted />
+                                        :
+                                        <Image key={index} source={`./src/public/images/projects/${projectContent?.directory}/${source}`} alt={alt} />
+                                ))}
+                            </div>
                         </Container>
                     </div>
                 </Transition>
