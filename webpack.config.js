@@ -1,5 +1,6 @@
 import {resolve} from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import CopyPlugin from 'copy-webpack-plugin';
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
@@ -72,6 +73,11 @@ const exports = {
             favicon: './public/images/icon.svg',
             filename: resolve('./out/index.html'),
             template: "./index.html"
+        }),
+        new CopyPlugin({
+            patterns: [
+                { from: "public", to: "public" }
+            ],
         }),
         {
             apply: (compiler) => {
