@@ -14,11 +14,11 @@ const useStyles = tss.create(({theme}) => ({
     }
 }));
 
-export default function Image({className, source, alt}) {
+export default function Image({className, source, ...props}) {
     const {cx, classes} = useStyles();
     return (
         <figure className={cx(classes.image, className?? "")}>
-            <img src={source} alt={alt} />
+            <img src={source} {...props} />
         </figure>
     );
 }
