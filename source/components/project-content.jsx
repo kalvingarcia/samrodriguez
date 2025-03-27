@@ -88,9 +88,9 @@ export default function ProjectContent({show, content, handleClose}) {
                         <div className={classes.gallery}>
                             {content?.media.map(({source, alt, type}, index) => (
                                 type === "video"? 
-                                    <Video key={index} source={`/optimized-media/projects/${content?.directory}/${source}`} controls autoPlay muted />
+                                    <Video key={index} source={`/optimized-media/projects/${content?.directory}/${source}`} controls autoPlay muted onContextMenu={event => event.preventDefault()} />
                                     :
-                                    <Image key={index} source={`/optimized-media/projects/${content?.directory}/${source}`} alt={alt} />
+                                    <Image key={index} source={`/optimized-media/projects/${content?.directory}/${source}`} alt={alt} onContextMenu={event => event.preventDefault()} draggable={false} />
                             ))}
                         </div>
                     </Container>
