@@ -21,10 +21,12 @@ const useStyles = tss.create(({theme, show}) => ({
         },
     },
     container: {
+        padding: "0px 40px",
         position: "fixed",
         left: 0,
         bottom: 0,
         width: "100%",
+        height: "100%",
         maxHeight: "100%",
         transition: "max-height 300ms ease-in-out",
         backgroundColor: theme.primary.container.hex(),
@@ -45,7 +47,9 @@ const useStyles = tss.create(({theme, show}) => ({
         }
     },
     info: {
-        padding: "40px",
+        margin: "auto",
+        padding: "40px 0px 0px 0px",
+        maxWidth: "1000px",
 
         "& .description": {
             fontFamily: "inherit",
@@ -53,8 +57,16 @@ const useStyles = tss.create(({theme, show}) => ({
         }
     },
     gallery: {
+        padding: "40px 0px",
         margin: "auto",
-        maxWidth: "1000px"
+        maxWidth: "1000px",
+        display: "flex",
+        flexWrap: "wrap",
+        gap: "10px",
+
+        "& > *": {
+            flex: "1 1 400px"
+        }
     }
 }));
 
