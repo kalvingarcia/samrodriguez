@@ -15,6 +15,9 @@ const useStyles = tss.create(({theme}) => ({
         gap: "20px",
         backgroundColor: theme.neutral.container.hex(),
     },
+    title: {
+        color: theme.primary.accent.darken(0.15).hex()
+    },
     content: {
         width: "100%",
         maxWidth: "1000px",
@@ -31,6 +34,9 @@ const useStyles = tss.create(({theme}) => ({
         marginRight: "auto",
         width: "100%",
         maxWidth: "500px"
+    },
+    subtitle: {
+        color: theme.secondary.accent.hex()
     },
     form: {
         margin: "auto",
@@ -73,10 +79,10 @@ export default function Contact({}) {
     const {classes} = useStyles({});
     return (
         <section id="contact" className={classes.section}>
-            <Title>contact me!</Title>
+            <Title className={classes.title}>contact me!</Title>
             <div className={classes.content}>
                 <div className={classes.left}>
-                    <Subtitle>any inquiries!</Subtitle>
+                    <Subtitle className={classes.subtitle}>any inquiries!</Subtitle>
                     <Body>send any inquiries about my availablility or my projects to <a href="mailto:contact@samrodriguez.co">contact@samrodriguez.co</a>.</Body>
                 </div>
                 <div className={classes.form}>
