@@ -74,9 +74,9 @@ const useStyles = tss.create(({theme, role, appearance, containerRole, rippleCla
  */
 export default function Button({className, role = "primary", appearance = "filled", icon, onMouseDown, onMouseUp, children, ...props}) {
     // Here we assign the container type depending on the appearance given.
-    const type = appearance === "filled"? "accent" : "container";
     const {containerContext, Container} = useContainer();
-    const {role: containerRole} = containerContext(); // We also request the parent container's role for text and outlined buttons.
+    const {role: containerRole, type: containerType} = containerContext(); // We also request the parent container's role for text and outlined buttons.
+    const type = appearance === "filled"? "accent" : appearance === "tonal"? "container" : containerType;
 
     // We obtain the ripple effect handler.
     const {rippleClass, rippleExpand, rippleFade} = useRippleEffect();
