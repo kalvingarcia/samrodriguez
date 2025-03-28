@@ -22,7 +22,7 @@ const useStyles = tss.create(({theme, scrolled, hovered, open}) => ({
         padding: "0px 40px",
         top: 0,
         zIndex: 1000,
-        backgroundColor: scrolled || hovered || open? theme.neutral.containerLowest.hex() : theme.neutral.containerHighest.hex()
+        backgroundColor: scrolled || hovered || open? theme.primary.accent.hex() : theme.neutral.background.hex()
     },
     content: {
         margin: "auto",
@@ -132,21 +132,23 @@ export default function Header({}) {
     return (
         <header className={classes.header} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
             <div className={classes.content}>
-                <div className={classes.logo}>
-                    <Icon className="icon" iconClass="sam-icons" icon="logo" />
-                    <Label className="text">am rodriguez</Label>
-                </div>
+                <Container role={open? "primary" : scrolled || hovered? "primary" : "neutral"} type={scrolled || hovered? "accent" : "container"}>
+                    <div className={classes.logo}>
+                        <Icon className="icon" iconClass="sam-icons" icon="logo" />
+                        <Label className="text">am rodriguez</Label>
+                    </div>
+                </Container>
                 <div className={classes.hamburger}>
                     <div className="scrim" onClick={() => {setOpen(false); document.body.classList.remove(classes.scrollLock)}} />
-                    <IconButton className="button" icon={open? "close" : "menu"} role={open? "tertiary" : "primary"} onClick={toggleHamburger} />
+                    <IconButton className="button" icon={open? "close" : "menu"} role={open? "secondary" : "secondary"} onClick={toggleHamburger} />
                     <div className="container">
-                        <Container role={open? "primary" : "neutral"} type="container">
+                        <Container role={open? "primary" : scrolled || hovered? "primary" : "neutral"} type={!open & (scrolled || hovered)? "accent" : "container"}>
                             <div className={classes.navlinks}>
                                 <Label><a href="#about">about</a></Label>
                                 <Label><a href="#projects">work</a></Label>
                                 <Label><a href="#contact">contact</a></Label>
                             </div>
-                            <IconButton className="darkModeButton" icon={darkMode? "dark_mode" : "light_mode"} role="tertiary" appearance='outlined' onClick={handleDarkMode} />
+                            <IconButton icon={darkMode? "dark_mode" : "light_mode"} role="tertiary" appearance='outlined' onClick={handleDarkMode} />
                         </Container>
                     </div>
                 </div>
