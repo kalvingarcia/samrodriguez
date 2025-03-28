@@ -18,6 +18,9 @@ const useStyles = tss.create(({theme, open, contentHeight, contentSize, openProj
         gap: "20px",
         backgroundColor: theme.neutral.container.hex()
     },
+    title: {
+        color: theme.primary.accent.darken(0.15).hex()
+    },
     content: {
         width: "100%",
         maxWidth: "1000px",
@@ -108,7 +111,7 @@ export default function Projects({}) {
 
     return (
         <section id="projects" className={classes.section}>
-            <Title>{open? "all projects" : "featured projects"}</Title>
+            <Title className={classes.title}>{open? "all projects" : "featured projects"}</Title>
             <div className={classes.content}>
                 {rows}
             </div>
