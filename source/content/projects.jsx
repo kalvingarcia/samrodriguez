@@ -15,7 +15,8 @@ const useStyles = tss.create(({theme, open, contentHeight, contentSize, openProj
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        gap: "20px"
+        gap: "20px",
+        backgroundColor: theme.neutral.container.hex()
     },
     content: {
         width: "100%",

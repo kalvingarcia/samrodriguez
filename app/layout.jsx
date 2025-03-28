@@ -7,11 +7,10 @@ import Header from '@/source/components/header';
 import Footer from '@/source/components/footer';
 import ThemeProvider from '@/source/components/common/theme';
 
-const emerald = "#4AC282";
-const cambridge = "#8EB9A8";
-const pale = "#E6DBE7";
-const teaRose = "#EDB7B9";
-const africanViolet = "#BB85B4";
+const tropical = "#AE87F6";
+const viridian = "#009278";
+const pale = "#E2D7F5";
+const raspberry = "#A53860";
 
 const samIconsFont = Local({
     variable: "--sam-icons",
@@ -106,11 +105,11 @@ export default function Layout({children}) {
                     <ThemeProvider 
                         darkModeDefault={(/true/i).test(getCookie("samPortfolioDarkMode"))}
                         palettePresets={{default: {
-                            primary: emerald,
-                            secondary: cambridge,
-                            tertiary: pale,
-                            error: teaRose,
-                            neutral: africanViolet
+                            primary: viridian,
+                            secondary: tropical,
+                            tertiary: viridian,
+                            error: raspberry,
+                            neutral: pale
                         }}}
                     >
                         <Header />

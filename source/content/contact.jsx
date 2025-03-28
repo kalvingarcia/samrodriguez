@@ -13,6 +13,7 @@ const useStyles = tss.create(({theme}) => ({
         flexDirection: "column",
         alignItems: "center",
         gap: "20px",
+        backgroundColor: theme.neutral.container.hex(),
     },
     content: {
         width: "100%",
@@ -37,7 +38,7 @@ const useStyles = tss.create(({theme}) => ({
         width: "100%",
         maxWidth: "500px",
         height: "fit-content",
-        backgroundColor: theme.neutral.container.hex(),
+        backgroundColor: theme.neutral.containerLowest.hex(),
         borderRadius: "20px 0px",
 
         "& .submit": {
