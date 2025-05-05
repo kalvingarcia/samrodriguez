@@ -103,7 +103,7 @@ export default function Layout({children}) {
                 `} />
                 {isClient &&
                     <ThemeProvider 
-                        darkModeDefault={(/true/i).test(getCookie("samPortfolioDarkMode"))}
+                        darkModeDefault={(/true/i).test(getCookie("samPortfolioDarkMode")?? true)}
                         palettePresets={{default: {
                             primary: viridian,
                             secondary: tropical,
