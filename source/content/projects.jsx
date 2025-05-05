@@ -58,7 +58,8 @@ const useStyles = tss.create(({theme, open, contentHeight, contentSize, openProj
 }));
 
 export default function Projects({}) {
-    const [open, setOpen] = useState();
+    const [openProjects, setOpenProjects] = useState(true);
+    const [openConcepts, setOpenConcepts] = useState(false);
 
     const [openProject, setOpenProject] = useState(false);
     const [projectContent, setProjectContent] = useState(undefined);
@@ -110,13 +111,23 @@ export default function Projects({}) {
     }, []);
 
     return (
-        <section id="projects" className={classes.section}>
-            <Title className={classes.title}>{open? "all projects" : "featured projects"}</Title>
-            <div className={classes.content}>
-                {rows}
-            </div>
-            <IconButton onClick={() => setOpen(!open)} icon={open? "keyboard_arrow_up" : "keyboard_arrow_down"} />
-            <ProjectContent show={openProject} content={projectContent} handleClose={handleClose} />
-        </section>
+        <>
+            <section id="projects" className={classes.section}>
+                <Title className={classes.title}>{openProjects? "my projects" : "featured projects"}</Title>
+                <div className={classes.content}>
+                    {rows}
+                </div>
+                <IconButton onClick={() => setOpenProjects(!openProjects)} icon={openProjects? "keyboard_arrow_up" : "keyboard_arrow_down"} />
+                <ProjectContent show={openProject} content={projectContent} handleClose={handleClose} />
+            </section>
+            <section id="projects" className={classes.section}>
+                <Title className={classes.title}>{openConcepts? "all concepts" : "some concepts"}</Title>
+                <div className={classes.content}>
+                    {rows}
+                </div>
+                <IconButton onClick={() => setOpenConcepts(!openConcepts)} icon={openConcepts? "keyboard_arrow_up" : "keyboard_arrow_down"} />
+                <ProjectContent show={openProject} content={projectContent} handleClose={handleClose} />
+            </section>
+        </>
     );
 }
