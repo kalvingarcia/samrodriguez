@@ -10,7 +10,7 @@ import projects from '../../public/projects.json';
 
 const ROW_COUNT = 3;
 
-const useStyles = tss.create(({theme, open, contentHeight, contentSize, openProject}) => ({
+const useStyles = tss.create(({theme, open, contentHeight, contentSize}) => ({
     section: {
         display: "flex",
         flexDirection: "column",
@@ -43,24 +43,19 @@ const useStyles = tss.create(({theme, open, contentHeight, contentSize, openProj
     row: {
         width: "100%",
         maxHeight: contentSize,
-        display: "flex",
+        display: "grid",
+        gridTemplateColumns: "1fr 1fr 1fr",
         gap: "20px",
-
-        "& > *": {
-            flex: `0 0 ${contentSize}`
-        },
 
         "@media (max-width: 1000px)": {
             maxHeight: contentSize * ROW_COUNT + 40,
-            flexDirection: "column"
+            gridTemplateColumns: "1fr",
         }
     }
 }));
 
 export default function Projects({}) {
-    const [openProjects, setOpenProjects] = useState(true);
-    const [openConcepts, setOpenConcepts] = useState(false);
-
+    const [open, setOpen] = useState(true);
     const [openProject, setOpenProject] = useState(false);
     const [projectContent, setProjectContent] = useState(undefined);
     const {project, closeProject} = useProject();
@@ -74,10 +69,10 @@ export default function Projects({}) {
             setProjectContent(projects.find(({directory}) => directory === project));
         }
     }, [project]);
-
     const [contentHeight, setContentHeight] = useState();
     const [contentSize, setContentSize] = useState();
-    const {classes} = useStyles({open, contentHeight, contentSize, openProject});
+
+    const {classes} = useStyles({open, contentHeight, contentSize});
 
     const [rows] = useState(() => {
         const rows = [];
@@ -96,7 +91,7 @@ export default function Projects({}) {
     useEffect(() => {    
         const checkWindowSize = () => {
             const width = Math.min(1000, window.innerWidth);
-            if(width == 1000) {
+            if(width === 1000) {
                 setContentSize((width  - 40) / ROW_COUNT);
                 setContentHeight((((width  - 40) / ROW_COUNT) * rows.length) + (20 * (rows.length - 1)));
             } else {
@@ -111,23 +106,13 @@ export default function Projects({}) {
     }, []);
 
     return (
-        <>
-            <section id="projects" className={classes.section}>
-                <Title className={classes.title}>{openProjects? "my projects" : "featured projects"}</Title>
-                <div className={classes.content}>
-                    {rows}
-                </div>
-                <IconButton onClick={() => setOpenProjects(!openProjects)} icon={openProjects? "keyboard_arrow_up" : "keyboard_arrow_down"} />
-                <ProjectContent show={openProject} content={projectContent} handleClose={handleClose} />
-            </section>
-            <section id="projects" className={classes.section}>
-                <Title className={classes.title}>{openConcepts? "all concepts" : "some concepts"}</Title>
-                <div className={classes.content}>
-                    {rows}
-                </div>
-                <IconButton onClick={() => setOpenConcepts(!openConcepts)} icon={openConcepts? "keyboard_arrow_up" : "keyboard_arrow_down"} />
-                <ProjectContent show={openProject} content={projectContent} handleClose={handleClose} />
-            </section>
-        </>
+        <section id="projects" className={classes.section}>
+            <Title className={classes.title}>{open? "my projects" : "featured projects"}</Title>
+            <div className={classes.content}>
+                {rows}
+            </div>
+            <IconButton onClick={() => setOpen(!open)} icon={open? "keyboard_arrow_up" : "keyboard_arrow_down"} />
+            <ProjectContent show={openProject} content={projectContent} handleClose={handleClose} />
+        </section>
     );
 }
