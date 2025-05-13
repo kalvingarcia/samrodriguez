@@ -67,6 +67,8 @@ export default function Projects({}) {
         if(project) {
             setOpenProject(true);
             setProjectContent(projects.find(({directory}) => directory === project));
+        } else {
+            setOpenProject(false)
         }
     }, [project]);
     const [contentHeight, setContentHeight] = useState();
