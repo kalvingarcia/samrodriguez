@@ -3,6 +3,7 @@ import {tss} from './common/theme';
 import useContainer from './common/hooks/container';
 import {Label}  from './common/typography';
 import IconButton from './common/iconography';
+import Button from './common/button';
 
 const useStyles = tss.create(({theme}) => ({
     footer: {
@@ -22,6 +23,9 @@ const useStyles = tss.create(({theme}) => ({
         display: "flex",
         gap: "10px"
     },
+    link: {
+        textDecoration: "none"
+    },
     credits: {
         alignSelf: "center",
         fontSize: "0.85rem",
@@ -36,8 +40,10 @@ export default function Footer({}) {
         <Container role="primary" type="container">
             <footer className={classes.footer}>
                 <div className={classes.socials}>
-                    <IconButton iconClass="sam-icons" icon="instagram" appearance="text" />
-                    <IconButton iconClass="sam-icons" icon="linkedin" appearance="text" />
+                    <a className={classes.link} href="/resume.pdf" download="resume.pdf">
+                        <Button icon="download" role="secondary" appearance="filled">My Resume</Button>
+                    </a>
+                    <a className={classes.link} href='https://linkedin.com/in/samrodriguezdesign' target='_blank'><IconButton iconClass="sam-icons" icon="linkedin" appearance="text" /></a>
                 </div>
                 <Label className={classes.credits}>designed by sam rodriguez and built by <a href="https://www.kalvingarcia.com">kalvin garcia</a></Label>
             </footer>
