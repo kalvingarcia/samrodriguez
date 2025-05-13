@@ -23,25 +23,33 @@
         ]
     },
     {
-        "directory": "tender-is-the-flesh",
-        "name": "tender is the flesh",
-        "type": "Book Cover Design",
-        "description": "This project presents a series of alternative cover designs for Tender is the Flesh by Agustina Bazterrica, a novel that explores themes of cannibalism and morality. Each design features a distinct visual interpretation of these unsettling themes, aiming to balance subtlety and emotional impact.\n\nThe primary cover features a delicate font contrasted by a blood-stained plate, subtly hinting at the novel’s horrific themes.\n\nOne variation mimics the appearance of a supermarket meat package ,showcasing how the commodification of human flesh is central to the story.\n\nAnother design depicts a human-shaped meat diagram with bold typography, emphasizing the novel’s gruesome and unsettling subject matter.",
+        "directory": "miau-made",
+        "name": "miau made",
+        "type": "Branding Design",
+        "description": "",
         "media": [
             {
-                "source": "final-book.webp",
-                "alt": "Final book design.",
+                "source": "logo.webp",
+                "alt": "Miau Made logo image",
                 "type": "image"
             },
             {
-                "source": "three-books.webp",
-                "alt": "Book design options.",
+                "source": "palette.webp",
+                "alt": "Palette showcase image",
                 "type": "image"
-            },
+            }
+        ]
+    },
+    {
+        "directory": "dunkin",
+        "name": "dunkin advert",
+        "type": "Advertising and Marketing Design",
+        "description": "",
+        "media": [
             {
-                "source": "book-jacket-design.webp",
-                "alt": "Final book design spread.",
-                "type": "image"
+                "source": "dunkin.mp4",
+                "alt": "Avertisement video",
+                "type": "video"
             }
         ]
     },
@@ -64,6 +72,29 @@
             {
                 "source": "logo.webp",
                 "alt": "Tea company logo design",
+                "type": "image"
+            }
+        ]
+    },
+    {
+        "directory": "tender-is-the-flesh",
+        "name": "tender is the flesh",
+        "type": "Book Cover Design",
+        "description": "This project presents a series of alternative cover designs for Tender is the Flesh by Agustina Bazterrica, a novel that explores themes of cannibalism and morality. Each design features a distinct visual interpretation of these unsettling themes, aiming to balance subtlety and emotional impact.\n\nThe primary cover features a delicate font contrasted by a blood-stained plate, subtly hinting at the novel’s horrific themes.\n\nOne variation mimics the appearance of a supermarket meat package ,showcasing how the commodification of human flesh is central to the story.\n\nAnother design depicts a human-shaped meat diagram with bold typography, emphasizing the novel’s gruesome and unsettling subject matter.",
+        "media": [
+            {
+                "source": "final-book.webp",
+                "alt": "Final book design.",
+                "type": "image"
+            },
+            {
+                "source": "three-books.webp",
+                "alt": "Book design options.",
+                "type": "image"
+            },
+            {
+                "source": "book-jacket-design.webp",
+                "alt": "Final book design spread.",
                 "type": "image"
             }
         ]
