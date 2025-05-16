@@ -98,5 +98,27 @@
                 "type": "image"
             }
         ]
+    },
+    {
+        "directory": "sam-rodriguez-branding",
+        "name": "Sam Rodriguez Branding",
+        "type": "Branding and Style Guide",
+        "description": "",
+        "media": [
+            {
+                "source": "logo.webp",
+                "alt": "Sam Rodriguez Brand logo",
+                "type": "image"
+            },
+            {
+                "source": "palette.webp",
+                "alt": "Sam Rodriguez Brand palette",
+                "type": "image"
+            },            {
+                "source": "type.webp",
+                "alt": "Sam Rodriguez Brand typography",
+                "type": "image"
+            }
+        ]
     }
 ]
