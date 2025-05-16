@@ -33,7 +33,11 @@ const useStyles = tss.create(({theme}) => ({
         marginLeft: "auto",
         marginRight: "auto",
         width: "100%",
-        maxWidth: "500px"
+        maxWidth: "500px",
+
+        "& a:hover": {
+            color: theme.primary.onContainer.hex()
+        }
     },
     subtitle: {
         color: theme.secondary.accent.hex()

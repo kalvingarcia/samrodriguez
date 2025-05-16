@@ -96,6 +96,10 @@ const useStyles = tss.create(({theme, scrolled, hovered, open}) => ({
 
         "@media (max-width: 1080px)": {
             flexDirection: "column"
+        },
+
+        "& a:hover": {
+            color: theme.secondary.onAccent.hex()
         }
     }
 }));
