@@ -29,7 +29,11 @@ const useStyles = tss.create(({theme}) => ({
     credits: {
         alignSelf: "center",
         fontSize: "0.85rem",
-        opacity: "0.75"
+        opacity: "0.75",
+
+        "& a:hover": {
+            color: theme.secondary.onContainer.hex()
+        }
     }
 }));
 
