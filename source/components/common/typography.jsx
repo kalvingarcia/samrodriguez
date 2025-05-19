@@ -46,7 +46,11 @@ const useStyles = tss.create(({theme, role, type}) => ({
         fontSize: "1rem",
         fontFamily: "var(--body-font)",
         lineHeight: 1.5,
-        color: theme[role][`on${type[0].toUpperCase() + type.slice(1)}`].hex()
+        color: theme[role][`on${type[0].toUpperCase() + type.slice(1)}`].hex(),
+
+        "&.formatted": {
+            textWrap: "pretty"
+        }
     }
 }));
 
@@ -164,6 +168,27 @@ export function Body({className, children, ...props}) {
     const {role, type} = containerContext();
     const {cx, classes} = useStyles({role, type});
     return <p className={cx(classes.body, className?? "")} {...props}>{children}</p>
+}
+
+/**
+ * The Formatted component is used to create body (`pre`) text. This component
+ * should be used for formatted paragraphs of body text. The Label component should
+ * be used instead for shorter labels or special one-off text segments.
+ *
+ * @param props The component takes 2 props:
+ *  *   The `className` prop is optional.
+ *  *   The `children` prop is specifically for text nodes.
+ *
+ * While not necessarily requires, other props can be passed to the
+ * component when needed, such as for capturing mouse events.
+ *
+ * @returns A `pre` jsx component.
+ */
+export function Formatted({className, children, ...props}) {
+    const {containerContext} = useContainer();
+    const {role, type} = containerContext();
+    const {cx, classes} = useStyles({role, type});
+    return <pre className={cx(classes.body, "formatted", className?? "")} {...props}>{children}</pre>
 }
 
 /**

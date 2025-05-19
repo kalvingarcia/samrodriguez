@@ -3,7 +3,7 @@ import IconButton from './common/iconography';
 import Transition from './common/transition';
 import Image from './common/image';
 import Video from './common/video';
-import {Body, Subtitle, Title} from './common/typography';
+import {Formatted, Subtitle, Title} from './common/typography';
 import useContainer from './common/hooks/container';
 
 const useStyles = tss.create(({theme, show}) => ({
@@ -49,12 +49,7 @@ const useStyles = tss.create(({theme, show}) => ({
     info: {
         margin: "auto",
         padding: "40px 0px 0px 0px",
-        maxWidth: "1000px",
-
-        "& .description": {
-            fontFamily: "inherit",
-            textWrap: "pretty"
-        }
+        maxWidth: "1000px"
     },
     gallery: {
         padding: "40px 0px",
@@ -79,7 +74,7 @@ export default function ProjectContent({show, content, handleClose}) {
                         <div className={classes.info}>
                             <Title>{content?.name}</Title>
                             <Subtitle>{content?.type}</Subtitle>
-                            <Body><pre className='description'>{content?.description}</pre></Body>
+                            <Formatted className='description'>{content?.description}</Formatted>
                         </div>
                         <div className={classes.gallery}>
                             {content?.media.map(({source, alt, type}, index) => (
