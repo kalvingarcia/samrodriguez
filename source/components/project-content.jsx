@@ -61,12 +61,8 @@ const useStyles = tss.create(({theme, show}) => ({
         margin: "auto",
         maxWidth: "1000px",
         display: "flex",
-        flexWrap: "wrap-reverse",
-        gap: "10px",
-
-        "& > *": {
-            flex: "1 1 400px"
-        }
+        flexWrap: "wrap",
+        gap: "10px"
     }
 }));
 
