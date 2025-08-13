@@ -33,8 +33,14 @@ function optimizeMedia(directory) {
             ffmpeg(fullPath).output(outputPath + ".mp4")
                 .videoCodec("libx264")
                 .audioCodec("aac")
-                .outputOptions("-crf 28")
-                .outputOptions("-movflags +faststart")
+                .outputOptions([
+                    "-crf 28",
+                    "-movflags +faststart",
+                    "-g 48",
+                    "-profile:v main",
+                    "-level 4.0"
+                ])
+                .outputOptions()
                 .on("error", error => console.error(`Error processing video ${fullPath}:`, error)).run();
 
         console.log("Completed processing:", outputPath);
