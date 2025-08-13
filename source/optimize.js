@@ -40,7 +40,6 @@ function optimizeMedia(directory) {
                     "-profile:v main",
                     "-level 4.0"
                 ])
-                .outputOptions()
                 .on("error", error => console.error(`Error processing video ${fullPath}:`, error)).run();
 
         console.log("Completed processing:", outputPath);
