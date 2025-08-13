@@ -34,6 +34,7 @@ function optimizeMedia(directory) {
                 .videoCodec("libx264")
                 .audioCodec("aac")
                 .outputOptions("-crf 28")
+                .outputOptions("-movflags +faststart")
                 .on("error", error => console.error(`Error processing video ${fullPath}:`, error)).run();
 
         console.log("Completed processing:", outputPath);
