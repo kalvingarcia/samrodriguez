@@ -14,7 +14,7 @@ export default function Image({className, source, ...props}) {
     const {cx, classes} = useStyles();
     return (
         <video className={cx(classes.video, className)} {...props}>
-            <source source={source} type="video/mp4" />
+            <source src={source} type="video/mp4" />
             Your browser does not support the video tag.
         </video>
     );
