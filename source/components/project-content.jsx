@@ -77,12 +77,13 @@ export default function ProjectContent({show, content, handleClose}) {
                             <Formatted className='description'>{content?.description}</Formatted>
                         </div>
                         <div className={classes.gallery}>
-                            {content?.media.map(({source, alt, type}, index) => (
-                                type === "video"? 
-                                    <Video key={index} source={`/optimized-media/projects/${content?.directory}/${source}`} controls autoPlay muted onContextMenu={event => event.preventDefault()} />
-                                    :
-                                    <Image key={index} source={`/optimized-media/projects/${content?.directory}/${source}`} alt={alt} onContextMenu={event => event.preventDefault()} draggable={false} />
-                            ))}
+                            {content?.media.map(({source, alt, type}, index) => {
+                                const sourceURL = `https://s3.samrodriguez.co.kalv.io/projects/${content?.directory}/${source}`;
+                                return (type === "video"? 
+                                    <Video key={index} source={sourceURL} controls autoPlay muted onContextMenu={event => event.preventDefault()} /> :
+                                    <Image key={index} source={sourceURL} alt={alt} onContextMenu={event => event.preventDefault()} draggable={false} />
+                                )
+                            })}
                         </div>
                     </Container>
                 </div>

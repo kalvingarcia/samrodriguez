@@ -64,7 +64,7 @@ export default function About({}) {
         <section id="about" className={classes.section}>
             <div className={classes.content}>
                 <div className={classes.container}>
-                    <Image className={classes.image} source="/optimized-media/profile.webp" alt="Portraiit of Sam" onContextMenu={event => event.preventDefault()} draggable={false} />
+                    <Image className={classes.image} source="https://s3.samrodriguez.co.kalv.io/profile.webp" alt="Portraiit of Sam" onContextMenu={event => event.preventDefault()} draggable={false} />
                     <div className={classes.bio}>
                         <Display className={classes.intro}>hi, i'm sam!</Display>
                         <Body className={classes.body}>i'm a graphic designer specializing in branding, motion graphics, and illustration. i love blending different mediums together to create unique visual identities.</Body>

@@ -41,7 +41,7 @@ export default function Project({directory, name, type}) {
     const {classes} = useStyles({hovered})
     return (
         <div className={classes.project} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} onClick={() => openProject(directory)}>
-            <Image className={classes.thumbnail} source={`/optimized-media/projects/${directory}/thumbnail.webp`} alt="Project link for opening project info." />
+            <Image className={classes.thumbnail} source={`https://s3.samrodriguez.co.kalv.io/projects/${directory}/thumbnail.webp`} alt="Project link for opening project info." />
             <Label className={classes.label}>{name}</Label>
         </div>
     )
