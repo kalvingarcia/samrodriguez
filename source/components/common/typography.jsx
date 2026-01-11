@@ -10,7 +10,7 @@ const useStyles = tss.create(({theme, role, type}) => ({
         position: "relative",
         fontSize: "3rem",
         fontFamily: "var(--display-font)",
-        color: theme[role][`on${type[0].toUpperCase() + type.slice(1)}`].hex()
+        color: theme.secondary.onContainer.hex()
     },
     title: {
         display: "block",
@@ -41,6 +41,18 @@ const useStyles = tss.create(({theme, role, type}) => ({
         color: theme[role][`on${type[0].toUpperCase() + type.slice(1)}`].hex()
     },
     body: {
+        display: "block",
+        position: "relative",
+        fontSize: "1rem",
+        fontFamily: "var(--body-font)",
+        lineHeight: 1.5,
+        color: theme.secondary.onContainer.hex(),
+
+        "&.formatted": {
+            textWrap: "pretty"
+        }
+    },
+    label: {
         display: "block",
         position: "relative",
         fontSize: "1rem",
@@ -210,5 +222,5 @@ export const Label = forwardRef(({className, children, __isInButton = false, ...
     const {containerContext} = useContainer();
     const {role, type} = containerContext();
     const {cx, classes} = useStyles({role, type});
-    return <span ref={ref} className={cx(classes.body, className?? "")} {...props}>{children}</span>
+    return <span ref={ref} className={cx(classes.label, className?? "")} {...props}>{children}</span>
 });

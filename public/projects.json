@@ -1,8 +1,9 @@
 [
     {
         "directory": "santurce-event",
-        "name": "santurce: sabor y arte",
+        "name": "Santurce: Sabor y Arte",
         "type": "Illustration and Event Design",
+        "date": "May 2024",
         "description": "\"Santurce: Sabor y Arte\" is a fictional event concept inspired by the vibrant culture of Santurce, Puerto Rico. The event is a showcase of Puerto Rican music, food, and art.\n\nFor this project, I designed an event ticket and promotional poster using Adobe Illustrator, incorporating key cultural elements such as the beach, a cuatro (a traditional Puerto Rican stringed instrument), and Santurce’s iconic colorful houses. I brought the design to life by  animating the poster in After Effects, adding movement that enhances the energy and rhythm of the event.",
         "media": [
             {
@@ -23,22 +24,10 @@
         ]
     },
     {
-        "directory": "entergalactic",
-        "name": "entergalactic",
-        "type": "Lyric Video",
-        "description": "As a longtime Kid Cudi fan, I was instantly drawn to the movie Entergalatic. Its bold and graphic art style and heartfelt storyline paired with the incredible soundtrack deeply inspired me. Ignite the Love is my favorite track from the album, and I wanted to create a lyric video that would capture the energy of the film while highlighting the mood of the song.\n\nUsing Adobe Premiere Pro, I edited together key scenes from the movie to give viewers a glimpse into the story, while focusing on the relationship between the main characters, Jabari and Meadow. Then I brought the project into Adobe After Effects, where I animated the lyrics.\n\nTo reflect Jabari's passion for street art, I chose a handwritten font that is reminiscent of graffiti. Also, I only animated parts select parts of the lyrics that helped aid the narrative of the song so the visuals of the movie could shine without the lyrics feeling overpowering.\n\nThis project allowed me to blend my love for music, animation, and motion design.",
-        "media": [
-            {
-                "source": "lyric-video.mp4",
-                "alt": "Lyric Video with motion graphics.",
-                "type": "video"
-            }
-        ]
-    },
-    {
         "directory": "miau-made",
-        "name": "miau made",
+        "name": "Miau Made",
         "type": "Branding Design",
+        "date": "May 2025",
         "description": "Miau Made is a fictional cat treat brand that strives to bring a playful feel to healthy treats for cats.\n\nAs a cat owner, I often found it difficult to find cat treats that were not only healthy but also had unique designs and flavors—especially when compared to the many options available for dogs. This inspired me to create Miau Made and bring some joy to felines and their owners! \n\nMy goal was to create a visual identity that is playful and engaging while still maintaining a clean, modern look that would appeal to a wide variety of cat owners. I created hand drawn doodles in Adobe Illustrator and incorporated them with bubbly typography and bright color palettes to reflect the fun of treat time.",
         "media": [
             {
@@ -54,21 +43,9 @@
         ]
     },
     {
-        "directory": "dunkin",
-        "name": "dunkin advert",
-        "type": "Advertising and Marketing Design",
-        "description": "This 45-second animated advertisement showcases Dunkin's menu through playful stop motion and energetic visuals.\n\nInspired by the wide variety of Dunkin's menu, I wanted to highlight the fun flavors of each of their products.  I began by photographing some of their items and created stop motion animations using Adobe Photoshop. Then, I went into Adobe After Effects and created a motion graphic to encourage viewers to download the Dunkin app and give Dunkin a try.",
-        "media": [
-            {
-                "source": "dunkin.mp4",
-                "alt": "Avertisement video",
-                "type": "video"
-            }
-        ]
-    },
-    {
         "directory": "teony",
-        "name": "teony",
+        "name": "Teony",
+        "date": "April 2023",
         "type": "Branding and Packaging Design",
         "description": "Teaony is a fictional tea brand inspired by the peony flower, known for its delicate sweetness and immune-boosting properties when used in tea.\n\nThis project was a personal passion, where I developed everything from the brand concept and name to the visual identity and packaging. This project stemmed from my love of flowers and tea. I designed a floral logo with a delicate type that reflects the elegant and soothing nature of peonies\n\nI designed two distinct tea blends:\nThe \"Calm Blend,\" infused with peony and chamomile, features a soft purple-blue color to convey relaxation and tranquility.\nThe \"Energy Blend\" is a vibrant yellow, symbolizing warmth and an invigorating burst of energy.",
         "media": [
@@ -90,9 +67,158 @@
         ]
     },
     {
+        "directory": "sam-rodriguez-branding",
+        "name": "Personal Branding",
+        "type": "Branding and Style Guide",
+        "date": "May 2023",
+        "description": "",
+        "media": [
+            {
+                "source": "logo.webp",
+                "alt": "Sam Rodriguez Brand logo",
+                "type": "image"
+            },
+            {
+                "source": "palette.webp",
+                "alt": "Sam Rodriguez Brand palette",
+                "type": "image"
+            },
+            {
+                "source": "type.webp",
+                "alt": "Sam Rodriguez Brand typography",
+                "type": "image"
+            },
+            {
+                "source": "front-cover.webp",
+                "alt": "Portfolio book cover",
+                "type": "image"
+            }
+        ]
+    },
+    {
+        "directory": "extinct-editorial",
+        "name": "Extinct",
+        "type": "Magazine Editorial Design",
+        "date": "May 2023",
+        "description": "Extinct explores the impact of human involvement on wildlife across the globe. This editorial highlights several species whose habitats and populations have been disrupted by human activity, pushing them toward endangerment and extinction.\n\nThe black and white color palette, paired with intentional splashes of red, emphasizes the seriousness of the subject matter. The red watercolor splotches partially obscure the animals and text, acting as a metaphor for humanity’s responsibility, symbolizing the blood on our hands.",
+        "media": [
+            {
+                "source": "spread-1.webp",
+                "alt": "First spread of the extinct editorial",
+                "type": "image"
+            },
+            {
+                "source": "spread-2.webp",
+                "alt": "Second spread of the extinct editorial",
+                "type": "image"
+            },
+            {
+                "source": "spread-3.webp",
+                "alt": "Third spread of the extinct editorial",
+                "type": "image"
+            },
+            {
+                "source": "spread-4.webp",
+                "alt": "Fourth spread of the extinct editorial",
+                "type": "image"
+            }
+        ]
+    },
+    {
+        "directory": "paramore-album-cover",
+        "name": "Paramore: After Laughter",
+        "type": "LP Packaging Design",
+        "date": "April 2023",
+        "description": "After Laughter by Paramore pairs upbeat, pop-rock melodies with lyrics that explore heavier emotions such as anxiety, disillusionment, and emotional turbulence. As one of my favorite bands, this album deeply resonated with me and became the inspiration for this LP packaging and promotional poster.\n\nTo reflect the contrast between sound and subject matter, I used vibrant, playful colors and dynamic imagery to capture the album’s energetic surface, while incorporating a rainy setting and layered waves to symbolize the emotional undercurrents present throughout many of the songs. These elements represent the tension between outward optimism and internal struggle that defines the album.\n\nThis project also allowed me to explore mixed media. I photographed myself using a prop to feature within the record design and poster, then combined this imagery with watercolor textures and digital elements. The blending of handmade and digital assets mirrors the emotional duality present in After Laughter, bright and expressive on the surface, yet introspective beneath.",
+        "media": [
+            {
+                "source": "album.webp",
+                "alt": "Record album propped against wall",
+                "type": "image"
+            },
+            {
+                "source": "poster.webp",
+                "alt": "Bus station advert for album",
+                "type": "image"
+            },
+            {
+                "source": "record.webp",
+                "alt": "Front and back cover of album",
+                "type": "image"
+            }
+        ]
+    },
+        {
+        "directory": "tearable-dreams",
+        "name": "Tearable Dreams",
+        "type": "Online Shop Branding Design",
+        "date": "October 2025",
+        "description": "Tearable Dreams is my personal brand that explores the balance between cute and creepy, celebrating the idea of finding magic in the mundane. Guided by the belief that everyday life should include a touch of spooky joy, not just Halloween.\n\nThe branding blends playful charm with subtle eeriness through its logo, typography, and color palette. Since “Tearable” is a pun on the word terrible, the brandmark features a pair of open scissors cutting through the moon. The moon and surrounding stars reference a dream catcher, reinforcing themes of dreams, imagination, and the subconscious. Two typefaces, Professor Minty and CCAltogetherOoky, were combined to create a custom logotype that feels both charming and softly unsettling, reflecting the brand’s overall tone.",
+        "media": [
+            {
+                "source": "logo.webp",
+                "alt": "Tearable Dreams logo image",
+                "type": "image"
+            },
+            {
+                "source": "type.webp",
+                "alt": "Type showcase image",
+                "type": "image"
+            }
+        ]
+    },
+    {
+        "directory": "entergalactic",
+        "name": "Entergalactic: Ignite the Love",
+        "type": "Lyric Video",
+        "date": "May 2025",
+        "description": "As a longtime Kid Cudi fan, I was immediately drawn to Entergalactic for its bold, graphic art style, heartfelt storytelling, and standout soundtrack. Ignite the Love is my favorite track from the album, and this lyric video was created to capture the energy of the film while emphasizing the emotional tone of the song.\n\nI edited key scenes from the movie in Adobe Premiere Pro to highlight the relationship between Jabari and Meadow, then brought the project into Adobe After Effects to animate the lyrics. To reflect Jabari’s connection to street art, I used a handwritten, graffiti-inspired typeface and selectively animated lyrics that supported the narrative, allowing the visuals to remain the focus.\n\nThis project allowed me to combine my interests in music, animation, and motion design into a cohesive storytelling piece.",
+        "media": [
+            {
+                "source": "lyric-video.mp4",
+                "alt": "Lyric Video with motion graphics.",
+                "type": "video"
+            }
+        ]
+    },
+    {
+        "directory": "dunkin",
+        "name": "Dunkin Advert",
+        "type": "Advertising and Marketing Design",
+        "date":"April 2025",
+        "description": "This 45-second animated advertisement showcases Dunkin's menu through playful stop motion and energetic visuals.\n\nInspired by the wide variety of Dunkin's menu, I wanted to highlight the fun flavors of each of their products.  I began by photographing some of their items and created stop motion animations using Adobe Photoshop. Then, I went into Adobe After Effects and created a motion graphic to encourage viewers to download the Dunkin app and give Dunkin a try.",
+        "media": [
+            {
+                "source": "dunkin.mp4",
+                "alt": "Avertisement video",
+                "type": "video"
+            }
+        ]
+    },
+    {
+        "directory": "tale-of-two-spectators",
+        "name": "A Tale of Two Spectators",
+        "type": "Theater Marketing Design",
+        "date": "February 2023",
+        "description": "A Tale of Two Spectators, based on the novel by Peter Manos, follows a man and a woman who secretly observe their respective spouses’ affair. Over time, their shared experience draws them closer, forming an unexpected bond shaped by hurt, curiosity, and connection.\n\nThe poster depicts the two characters seated together on a bench, capturing a quiet moment of observation and emotional distance. The woman’s cigarette references key moments from the story, while the rising smoke creates a dynamic visual element that guides the viewer’s eye and frames the composition alongside the typography.\n\nThree color variations were created to reflect different emotional tones within the narrative. The light orange version with warm red accents emphasizes the heavier, more serious mood present at the beginning of the play. The yellow and purple variation introduces a more playful contrast, while the blue and yellow version balances emotional weight with a softer, more reflective tone.\n\nIn Spring 2023, Hostos Community College hosted a competition for students to design the official poster for the stage adaptation. My blue colorway was selected and used across the final printed promotional materials for the production.",
+        "media": [
+            {
+                "source": "poster.webp",
+                "alt": "Blue color way poster",
+                "type": "image"
+            },
+            {
+                "source": "mockup.webp",
+                "alt": "Posters propped against a wall",
+                "type": "image"
+            }
+        ]
+    },
+    {
         "directory": "tender-is-the-flesh",
-        "name": "tender is the flesh",
+        "name": "Tender is the Flesh",
         "type": "Book Cover Design",
+        "date": "May 2023",
         "description": "This project presents a series of alternative cover designs for Tender is the Flesh by Agustina Bazterrica, a novel that explores themes of cannibalism and morality. Each design features a distinct visual interpretation of these unsettling themes, aiming to balance subtlety and emotional impact.\n\nThe primary cover features a delicate font contrasted by a blood-stained plate, subtly hinting at the novel’s horrific themes.\n\nOne variation mimics the appearance of a supermarket meat package ,showcasing how the commodification of human flesh is central to the story.\n\nAnother design depicts a human-shaped meat diagram with bold typography, emphasizing the novel’s gruesome and unsettling subject matter.",
         "media": [
             {
@@ -108,28 +234,6 @@
             {
                 "source": "book-jacket-design.webp",
                 "alt": "Final book design spread.",
-                "type": "image"
-            }
-        ]
-    },
-    {
-        "directory": "sam-rodriguez-branding",
-        "name": "sam rodriguez branding",
-        "type": "Branding and Style Guide",
-        "description": "",
-        "media": [
-            {
-                "source": "logo.webp",
-                "alt": "Sam Rodriguez Brand logo",
-                "type": "image"
-            },
-            {
-                "source": "palette.webp",
-                "alt": "Sam Rodriguez Brand palette",
-                "type": "image"
-            },            {
-                "source": "type.webp",
-                "alt": "Sam Rodriguez Brand typography",
                 "type": "image"
             }
         ]

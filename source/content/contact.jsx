@@ -13,10 +13,10 @@ const useStyles = tss.create(({theme}) => ({
         flexDirection: "column",
         alignItems: "center",
         gap: "20px",
-        backgroundColor: theme.neutral.container.hex(),
+        backgroundColor: theme.neutral.background.hex(),
     },
     title: {
-        color: theme.primary.accent.darken(0.15).hex()
+        color: theme.secondary.onContainer.hex()
     },
     content: {
         width: "100%",
@@ -83,19 +83,19 @@ export default function Contact({}) {
     const {classes} = useStyles({});
     return (
         <section id="contact" className={classes.section}>
-            <Title className={classes.title}>contact me!</Title>
+            <Title className={classes.title}>Contact Me!</Title>
             <div className={classes.content}>
                 <div className={classes.left}>
-                    <Subtitle className={classes.subtitle}>any inquiries!</Subtitle>
-                    <Body>send any inquiries about my availablility or my projects to <a href="mailto:contact@samrodriguez.co">contact@samrodriguez.co</a>.</Body>
+                    <Subtitle className={classes.subtitle}>Any inquiries!</Subtitle>
+                    <Body>Send any inquiries about my availablility or my projects to <a href="mailto:contact@samrodriguez.co">contact@samrodriguez.co</a>.</Body>
                 </div>
                 <div className={classes.form}>
                     <Form id="contact-form">
-                        <TextField label="name" placeholder="john doe" required />
-                        <TextField label="email" placeholder="sample@email.com" required />
-                        <TextField label="phone (optional)" placeholder="123-456-7890" />
-                        <TextArea  label="message" placeholder="write your message here!" required />
-                        <Button className="submit" icon="send" onClick={validate}>submit</Button>
+                        <TextField label="Name" placeholder="John Doe" required />
+                        <TextField label="Email" placeholder="sample@email.com" required />
+                        <TextField label="Phone (optional)" placeholder="123-456-7890" />
+                        <TextArea  label="Message" placeholder="Write your message here!" required />
+                        <Button className="submit" icon="send" onClick={validate}>Submit</Button>
                     </Form>
                 </div>
             </div>

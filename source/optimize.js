@@ -11,8 +11,8 @@ ffmpeg.setFfmpegPath(ffmpegPath);
 const imageExtensions = ['.png', '.jpg', '.jpeg', '.gif'];
 const videoEtensions = ['.mp4', '.mov', '.webm'];
 
-const inputDirectory = "public/media";
-const outputDirectory = "public/optimized-media";
+const inputDirectory = "public\\media";
+const outputDirectory = "public\\optimized-media";
 
 // Ensure output directory exists
 if(!existsSync(outputDirectory)) mkdirSync(outputDirectory, {recursive: true});

@@ -34,7 +34,7 @@ const useStyles = tss.create(({theme, filled, error}) => ({
         overflow: "hidden",
         borderBottom: `1pt solid ${theme[error? "error" : "neutral"].onContainer.alpha(0.5).hexa()}`,
         "&:focus-within": {
-            borderColor: theme[error? "error" : "secondary"].accent.hex()
+            borderColor: theme[error? "error" : "secondary"].onAccent.hex()
         },
         "&::before": {
             content: "''",
@@ -57,7 +57,7 @@ const useStyles = tss.create(({theme, filled, error}) => ({
             transform: "scale(0)",
             opacity: 0,
             transition: "transform 100ms ease, opacity 200ms ease",
-            borderBottom: `1pt solid ${theme[error? "error" : "secondary"].accent.hex()}`
+            borderBottom: `1pt solid ${theme[error? "error" : "secondary"].onAccent.hex()}`
         },
         "&:focus-within::after": {
             transform: "scale(1)",
@@ -100,7 +100,7 @@ const useStyles = tss.create(({theme, filled, error}) => ({
         "&:focus-within .label": {
             transform: "translate(0, -80%) scale(0.7)",
             opacity: 1,
-            color: theme[error? "error" : "secondary"].accent.hex()
+            color: theme[error? "error" : "secondary"].onAccent.hex()
         },
         "&:has(input:required) .label::after": {
             content: "'*'"

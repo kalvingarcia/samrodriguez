@@ -13,13 +13,14 @@ const useStyles = tss.create(({theme}) => ({
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        backgroundColor: theme.tertiary.container.hex()
+        backgroundColor: theme.primary.accent.hex()
     },
     socials: {
         margin: "auto",
         width: "100%",
         maxWidth: "1000px",
         justifyContent: "flex-end",
+        alignItems: "flex-end",
         display: "flex",
         gap: "10px"
     },
@@ -32,7 +33,7 @@ const useStyles = tss.create(({theme}) => ({
         opacity: "0.75",
 
         "& a:hover": {
-            color: theme.secondary.onContainer.hex()
+            color: theme.secondary.container.hex()
         }
     }
 }));
@@ -41,15 +42,17 @@ export default function Footer({}) {
     const {Container} = useContainer();
     const {classes} = useStyles({});
     return (
-        <Container role="primary" type="container">
+        <Container role="primary" type="accent">
             <footer className={classes.footer}>
                 <div className={classes.socials}>
-                    <a className={classes.link} href="/resume.pdf" download="resume.pdf">
-                        <Button icon="download" role="secondary" appearance="filled">My Resume</Button>
+                    <a className={classes.link} href="/resume.pdf" download="SamanthaRodriguez_Resume.pdf">
+                        <Button icon="download" role="primary"  appearance="text">My Resume</Button>
                     </a>
-                    <a className={classes.link} href='https://linkedin.com/in/samrodriguezdesign' target='_blank'><IconButton iconClass="sam-icons" icon="linkedin" appearance="text" /></a>
+                    <a className={classes.link} href='https://linkedin.com/in/samrodriguezdesign' target='_blank'>
+                        <IconButton iconClass="sam-icons" icon="linkedin" appearance="text" />
+                    </a>
                 </div>
-                <Label className={classes.credits}>designed by sam rodriguez and built by <a href="https://www.kalvingarcia.com">kalvin garcia</a></Label>
+                <Label className={classes.credits}>Designed by Sam Rodriguez and built by <a href="https://www.kalvingarcia.com">Kalvin Garcia</a></Label>
             </footer>
         </Container>
     );

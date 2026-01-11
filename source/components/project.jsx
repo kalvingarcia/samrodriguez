@@ -20,6 +20,7 @@ const useStyles = tss.create(({theme, hovered}) => ({
         height: "100%"
     },
     label: {
+        padding: "20px",
         position: "absolute",
         inset: "0",
         width: "100%",
@@ -27,6 +28,7 @@ const useStyles = tss.create(({theme, hovered}) => ({
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        textAlign: "center",
         fontSize: "1.5rem",
         fontStyle: "bold",
         backgroundColor: theme.neutral.containerLowest.alpha(0.8).hexa(),

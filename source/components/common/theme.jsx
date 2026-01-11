@@ -17,46 +17,24 @@ export function useTheme() {
     return useContext(ThemeContext);
 }
 
-const DarkModeContext = createContext();
-export function useDarkMode() {
-    return useContext(DarkModeContext);
-}
-
 export const tss = createTss({useContext: () => {
     return {theme: useContext(ThemeContext).theme};
 }}).tss;
 
 const lightness = {
-    dark: {
-        accent: 80,
-        onAccent: 20,
-        container: 30,
-        onContainer: 90,
-        background: 5,
-        surfaceLowest: 10,
-        surfaceLow: 12.5,
-        surface: 15,
-        surfaceHigh: 17.5,
-        surfaceHighest: 20,
-        onSurface: 90,
-        rule: 60,
-        shadow: 0
-    },
-    light: {
-        accent: 40,
-        onAccent: 90,
-        container: 80,
-        onContainer: 10,
-        background: 95,
-        surfaceLowest: 90,
-        surfaceLow: 87.5,
-        surface: 85,
-        surfaceHigh: 82.5,
-        surfaceHighest: 80,
-        onSurface: 10,
-        rule: 50,
-        shadow: 0
-    }
+    accent: 80,
+    onAccent: 15,
+    container: 50,
+    onContainer: 90,
+    background: 40,
+    surfaceLowest: 50,
+    surfaceLow: 52.5,
+    surface: 55,
+    surfaceHigh: 57.5,
+    surfaceHighest: 60,
+    onSurface: 95,
+    rule: 60,
+    shadow: 0
 };
 
 /**
@@ -69,12 +47,7 @@ const lightness = {
  * @param props The component only takes 1 prop. The `children` prop is specifically used to hold everything that will be themed.
  * @returns A React component.
  */
-export default function ThemeProvider({darkModeDefault = false, themeDefault = "default", palettePresets, children}) {
-    const [darkMode, setDarkMode] = useState(darkModeDefault);
-    const toggleDarkMode = () => {
-        setDarkMode(!darkMode);
-    }
-
+export default function ThemeProvider({themeDefault = "default", palettePresets, children}) {
     const paletteDictionary = useRef({
         default: {primary: oxford, secondary: charcoal, tertiary: honeydew, error: melon, neutral: silver},
         ...palettePresets
@@ -91,7 +64,7 @@ export default function ThemeProvider({darkModeDefault = false, themeDefault = "
         delete paletteDictionary.current[themeName];
     };
 
-    const createTheme = (themeName, paletteObject, darkMode) => {
+    const createTheme = (themeName, paletteObject) => {
         if(!paletteObject)
             paletteObject = paletteDictionary.current.default;
         try {
@@ -102,44 +75,43 @@ export default function ThemeProvider({darkModeDefault = false, themeDefault = "
             const neutral = Color(paletteObject.neutral);
 
             // The object is populated with color objects, this gives the user finetuning abilities.
-            // The theme name is also housed in the object so the user can display it, but its mostly
-            // so that toggling darkMode works.
+            // The theme name is also housed in the object so the user can display it
             return {
                 name: themeName,
                 primary: {
-                    accent: primary.lightness(lightness[darkMode? 'dark' : 'light'].accent),
-                    onAccent: primary.lightness(lightness[darkMode? 'dark' : 'light'].onAccent),
-                    container: primary.lightness(lightness[darkMode? 'dark' : 'light'].container),
-                    onContainer: primary.lightness(lightness[darkMode? 'dark' : 'light'].onContainer),
+                    accent: primary.lightness(lightness.accent),
+                    onAccent: primary.lightness(lightness.onAccent),
+                    container: primary.lightness(lightness.container),
+                    onContainer: primary.lightness(lightness.onContainer),
                 },
                 secondary: {
-                    accent: secondary.lightness(lightness[darkMode? 'dark' : 'light'].accent),
-                    onAccent: secondary.lightness(lightness[darkMode? 'dark' : 'light'].onAccent),
-                    container: secondary.lightness(lightness[darkMode? 'dark' : 'light'].container),
-                    onContainer: secondary.lightness(lightness[darkMode? 'dark' : 'light'].onContainer),
+                    accent: secondary.lightness(lightness.accent),
+                    onAccent: secondary.lightness(lightness.onAccent),
+                    container: secondary.lightness(lightness.container),
+                    onContainer: secondary.lightness(lightness.onContainer),
                 },
                 tertiary: {
-                    accent: tertiary.lightness(lightness[darkMode? 'dark' : 'light'].accent),
-                    onAccent: tertiary.lightness(lightness[darkMode? 'dark' : 'light'].onAccent),
-                    container: tertiary.lightness(lightness[darkMode? 'dark' : 'light'].container),
-                    onContainer: tertiary.lightness(lightness[darkMode? 'dark' : 'light'].onContainer),
+                    accent: tertiary.lightness(lightness.accent),
+                    onAccent: tertiary.lightness(lightness.onAccent),
+                    container: tertiary.lightness(lightness.container),
+                    onContainer: tertiary.lightness(lightness.onContainer),
                 },
                 error: {
-                    accent: error.lightness(lightness[darkMode? 'dark' : 'light'].accent),
-                    onAccent: error.lightness(lightness[darkMode? 'dark' : 'light'].onAccent),
-                    container: error.lightness(lightness[darkMode? 'dark' : 'light'].container),
-                    onContainer: error.lightness(lightness[darkMode? 'dark' : 'light'].onContainer),
+                    accent: error.lightness(lightness.accent),
+                    onAccent: error.lightness(lightness.onAccent),
+                    container: error.lightness(lightness.container),
+                    onContainer: error.lightness(lightness.onContainer),
                 },
                 neutral: {
-                    background: neutral.lightness(lightness[darkMode? 'dark' : 'light'].background),
-                    containerLowest: neutral.lightness(lightness[darkMode? 'dark' : 'light'].surfaceLowest),
-                    containerLow: neutral.lightness(lightness[darkMode? 'dark' : 'light'].surfaceLow),
-                    container: neutral.lightness(lightness[darkMode? 'dark' : 'light'].surface),
-                    containerHigh: neutral.lightness(lightness[darkMode? 'dark' : 'light'].surfaceHigh),
-                    containerHighest: neutral.lightness(lightness[darkMode? 'dark' : 'light'].surfaceHighest),
-                    onContainer: neutral.lightness(lightness[darkMode? 'dark' : 'light'].onSurface),
-                    rule: neutral.lightness(lightness[darkMode? 'dark' : 'light'].rule),
-                    shadow: neutral.lightness(lightness[darkMode? 'dark' : 'light'].shadow)
+                    background: neutral.lightness(lightness.background),
+                    containerLowest: neutral.lightness(lightness.surfaceLowest),
+                    containerLow: neutral.lightness(lightness.surfaceLow),
+                    container: neutral.lightness(lightness.surface),
+                    containerHigh: neutral.lightness(lightness.surfaceHigh),
+                    containerHighest: neutral.lightness(lightness.surfaceHighest),
+                    onContainer: neutral.lightness(lightness.onSurface),
+                    rule: neutral.lightness(lightness.rule),
+                    shadow: neutral.lightness(lightness.shadow)
                 }
             };
         } catch(error) {
@@ -150,11 +122,11 @@ export default function ThemeProvider({darkModeDefault = false, themeDefault = "
         }
     };
 
-    const [theme, setTheme] = useState(createTheme(themeDefault, paletteDictionary.current[themeDefault], darkMode));
+    const [theme, setTheme] = useState(createTheme(themeDefault, paletteDictionary.current[themeDefault]));
     const changeTheme = (themeName) => {
         try {
             // The new theme is created.
-            const newTheme = createTheme(themeName, paletteDictionary.current[themeName], darkMode);
+            const newTheme = createTheme(themeName, paletteDictionary.current[themeName]);
             if(!newTheme) // If the theme isn't defined, then that means the palette object was structured incorrectly.
                 return console.warn("Theme was not created sucessfully. Please ensure your palette object has primary, secondary, tertiary, error, and neutral as properties.");
             setTheme(newTheme);
@@ -162,9 +134,6 @@ export default function ThemeProvider({darkModeDefault = false, themeDefault = "
             console.error("While setting a theme an error occured: " + error.message); 
         }
     };
-    useEffect(() => {
-        changeTheme(theme.name);
-    }, [darkMode]);
 
     const defaults = {
         "body *": {
@@ -243,10 +212,8 @@ export default function ThemeProvider({darkModeDefault = false, themeDefault = "
     return (
         <NextAppDirEmotionCacheProvider options={{key: "css"}}>
             <ThemeContext.Provider value={{theme, palettes: paletteDictionary.current, changeTheme, addPalette, removePalette}}>
-                <DarkModeContext.Provider value={{darkMode, toggleDarkMode}}>
-                    <GlobalStyles styles={defaults} />
-                    {children}
-                </DarkModeContext.Provider>
+                <GlobalStyles styles={defaults} />
+                {children}
             </ThemeContext.Provider>
         </NextAppDirEmotionCacheProvider>
     );

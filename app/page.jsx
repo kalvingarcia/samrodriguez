@@ -5,8 +5,8 @@ import Contact from '@/source/content/contact';
 export default function Homepage() {
     return (
         <main>
-            <About />
             <Projects />
+            <About />
             <Contact />
         </main>
     );

@@ -1,7 +1,7 @@
 "use client"
 import { useEffect, useState } from 'react';
 import {setCookie} from 'cookies-next';
-import {tss, useDarkMode} from './common/theme';
+import {tss} from './common/theme';
 import useContainer from './common/hooks/container';
 import {Label} from './common/typography';
 import IconButton, {Icon} from './common/iconography';
@@ -22,7 +22,7 @@ const useStyles = tss.create(({theme, scrolled, hovered, open}) => ({
         padding: "0px 40px",
         top: 0,
         zIndex: 1000,
-        backgroundColor: scrolled || hovered || open? theme.primary.accent.hex() : theme.neutral.background.hex()
+        backgroundColor: scrolled || hovered || open? theme.primary.container.hex() : theme.neutral.container.hex()
     },
     content: {
         margin: "auto",
@@ -39,13 +39,15 @@ const useStyles = tss.create(({theme, scrolled, hovered, open}) => ({
         alignItems: "center",
 
         "& .icon": {
-            fontSize: "50px"
+            fontSize: "50px",
+            color:  theme.secondary.onContainer.hex(),
         },
         "& .text": {
             fontFamily: "var(--display-font)",
             fontSize: "1.45rem",
             marginLeft: "-20px",
-            marginTop: "-7px"
+            marginTop: "-7px",
+            color:  theme.secondary.onContainer.hex(),
         }
     },
     hamburger: {
@@ -70,13 +72,17 @@ const useStyles = tss.create(({theme, scrolled, hovered, open}) => ({
             gap: "20px",
             overflow: "hidden",
 
+            "& a:hover": {
+                color: open? theme.secondary.onAccent.hex() : theme.secondary.onContainer.hex()
+            },
+
             "@media (max-width: 1080px)": {
                 position: "fixed",
                 inset: 0,
                 width: "100%",
                 aspectRatio: 1,
                 flexDirection: "column",
-                backgroundColor: theme.primary.container.hex(),
+                backgroundColor: theme.primary.accent.hex(),
                 clipPath: open? "circle(min(100%, 500px) at 100% 0)" : "circle(0 at 100% 0)",
                 transition: "clip-path 300ms ease-in-out",
 
@@ -88,29 +94,10 @@ const useStyles = tss.create(({theme, scrolled, hovered, open}) => ({
                 }
             }
         }
-    },
-    navlinks: {
-        display: "flex",
-        alignItems: "center",
-        gap: "20px",
-
-        "@media (max-width: 1080px)": {
-            flexDirection: "column"
-        },
-
-        "& a:hover": {
-            color: theme.secondary.onAccent.hex()
-        }
     }
 }));
 
 export default function Header({}) {
-    const {darkMode, toggleDarkMode} = useDarkMode();
-    const handleDarkMode = () => {
-        setCookie("samPortfolioDarkMode", !darkMode, cookieOptions);
-        toggleDarkMode();
-    };
-
     const [hovered, setHovered] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const checkScroll = ({target}) => {
@@ -136,26 +123,29 @@ export default function Header({}) {
     return (
         <header className={classes.header} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
             <div className={classes.content}>
-                <Container role={open? "primary" : scrolled || hovered? "primary" : "neutral"} type={scrolled || hovered? "accent" : "container"}>
+                <Container role={open? "primary" : scrolled || hovered? "primary" : "neutral"} type="container">
                     <div className={classes.logo}>
                         <Icon className="icon" iconClass="sam-icons" icon="logo" />
-                        <Label className="text">am rodriguez</Label>
+                        <Label className="text">am Rodriguez</Label>
+                    </div>
+                    <div className={classes.hamburger}>
+                        <div className="scrim" onClick={() => {setOpen(false); document.body.classList.remove(classes.scrollLock)}} />
+                        <IconButton
+                            className="button"
+                            icon={open? "close" : "menu"}
+                            role={open? "secondary" : "primary"}
+                            appearance={open? "filled" : "text"}
+                            onClick={toggleHamburger}
+                        />
+                        <div className="container">
+                            <Container role={open? "primary" : scrolled || hovered? "primary" : "neutral"} type={open? "accent" : "container"}>
+                                <Label><a href="#projects">Work</a></Label>
+                                <Label><a href="#about">About</a></Label>
+                                <Label><a href="#contact">Contact</a></Label>
+                            </Container>
+                        </div>
                     </div>
                 </Container>
-                <div className={classes.hamburger}>
-                    <div className="scrim" onClick={() => {setOpen(false); document.body.classList.remove(classes.scrollLock)}} />
-                    <IconButton className="button" icon={open? "close" : "menu"} role={open? "secondary" : "secondary"} onClick={toggleHamburger} />
-                    <div className="container">
-                        <Container role={open? "primary" : scrolled || hovered? "primary" : "neutral"} type={!open & (scrolled || hovered)? "accent" : "container"}>
-                            <div className={classes.navlinks}>
-                                <Label><a href="#about">about</a></Label>
-                                <Label><a href="#projects">work</a></Label>
-                                <Label><a href="#contact">contact</a></Label>
-                            </div>
-                            <IconButton icon={darkMode? "dark_mode" : "light_mode"} role="tertiary" appearance='outlined' onClick={handleDarkMode} />
-                        </Container>
-                    </div>
-                </div>
             </div>
         </header>
     );
