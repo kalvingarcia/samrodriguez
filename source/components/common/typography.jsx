@@ -49,7 +49,7 @@ const useStyles = tss.create(({theme, role, type}) => ({
         color: theme.secondary.onContainer.hex(),
 
         "&.formatted": {
-            textWrap: "pretty"
+            textWrap: "wrap"
         }
     },
     label: {
@@ -61,7 +61,7 @@ const useStyles = tss.create(({theme, role, type}) => ({
         color: theme[role][`on${type[0].toUpperCase() + type.slice(1)}`].hex(),
 
         "&.formatted": {
-            textWrap: "pretty"
+            textWrap: "wrap"
         }
     }
 }));
