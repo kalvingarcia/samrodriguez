@@ -80,6 +80,7 @@ const useStyles = tss.create(({theme, show}) => ({
     },
     gallery: {
         display: "flex",
+        maxWidth: "700px",
         flexWrap: "wrap",
         paddingBottom: "40px"
     }
