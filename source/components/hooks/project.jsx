@@ -4,10 +4,10 @@ export default function useProject() {
     const getProjectFromURL = () => new URL(window.location.href).searchParams.get("open")?? undefined;
     const [project, setProject] = useState(undefined);
 
-    const updateURL = (directory) => {
+    const updateURL = (slug) => {
         const url = new URL(window.location.href);
-        if (directory) {
-            url.searchParams.set("open", directory);
+        if (slug) {
+            url.searchParams.set("open", slug);
         } else {
             url.searchParams.delete("open");
         }
@@ -31,10 +31,6 @@ export default function useProject() {
             window.removeEventListener("pushstate", handleLocationChange);
         };
     }, []);
-
-    useEffect(() => {
-        console.log("Project updated:", project);
-    }, [project]);
 
     return {project, openProject: updateURL, closeProject: () => updateURL(undefined)};
 }

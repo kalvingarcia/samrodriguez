@@ -21,12 +21,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          lfs: true
 
-      - name: Pull LFS Files
-        run: git lfs pull
-      
       - name: Setup Node
         uses: ./.github/workflows/setup-node
 
@@ -36,6 +31,9 @@ jobs:
           static_site_generator: next
 
       - name: Build
+        env:
+          NEXT_PUBLIC_KLIVE_URL: ${{vars.KLIVE_URL}}
+          NEXT_PUBLIC_KLIVE_KEY: ${{secrets.KLIVE_KEY}}
         run:  npm run build;
               touch ./out/.nojekyll;
 

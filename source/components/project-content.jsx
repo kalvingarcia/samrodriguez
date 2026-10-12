@@ -1,10 +1,9 @@
 import {tss} from './common/theme';
 import IconButton from './common/iconography';
 import Transition from './common/transition';
-import Image from './common/image';
-import Video from './common/video';
-import {Formatted, Subtitle, Title, Subheading} from './common/typography';
 import useContainer from './common/hooks/container';
+import {renderNode} from '../klive/blocks/render-nodes';
+import {useAssets, useRenderConfig} from '../klive/hooks';
 
 const useStyles = tss.create(({theme, show}) => ({
     scrim: {
@@ -43,52 +42,33 @@ const useStyles = tss.create(({theme, show}) => ({
         display: "flex",
         flexDirection: "column"
     },
+    // Zero-height and sticky so the close button sits beside the title (like the old
+    // header row) and stays reachable while scrolling, without pushing the body down.
     header: {
-        width: "100%",
+        position: "sticky",
+        top: 0,
+        height: 0,
+        zIndex: 2,
         display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center"
-    },
-    info: {
-        display:  "flex",
-        flexDirection: "column",
-        gap: "5px",
-
-        "& .title": {
-            color:  theme.secondary.accent.hex()
-        }
-    },
-    content: {
-        display: "flex",
-        gap: "40px",
-        justifyContent: "flex-start",
+        justifyContent: "flex-end",
         alignItems: "flex-start",
-
-        "& .description": {
-            maxWidth: "300px"
-        },
-
-        "@media (max-width: 1000px)": {
-            padding: "40px 0px",
-            gap: 0,
-            flexDirection: "column-reverse",
-
-            "& .description": {
-                maxWidth: "100%"
-            }
-        }
+        overflow: "visible"
     },
-    gallery: {
-        display: "flex",
-        maxWidth: "700px",
-        flexWrap: "wrap",
-        paddingBottom: "40px"
+    body: {
+        paddingBottom: "40px",
+
+        // Keep the opening title clear of the close button.
+        "& > div > .heading:first-child": {
+            paddingRight: "60px"
+        }
     }
 }));
 
 export default function ProjectContent({show, content, handleClose}) {
     const {Container} = useContainer();
     const {classes} = useStyles({show});
+    const assetsById = useAssets(content?.body);
+    const config = useRenderConfig();
     return (
         <>
             <div className={classes.scrim} />
@@ -97,24 +77,11 @@ export default function ProjectContent({show, content, handleClose}) {
                     <div className={classes.container}>
                         <Container role="primary" type="container">
                             <div className={classes.header}>
-                                <div className={classes.info}>
-                                    <Title className="title">{content?.name}</Title>
-                                    <Subtitle>{content?.type}</Subtitle>
-                                    <Subheading>{content?.date}</Subheading>
-                                </div>
                                 <IconButton className="close" icon="close" role="tertiary" onClick={handleClose} />
                             </div>
-                            <div className={classes.content}>
-                                <Formatted className='description'>{content?.description}</Formatted>
-                                <div className={classes.gallery}>
-                                    {content?.media.map(({source, alt, type}, index) => {
-                                        const sourceURL = `https://s3.samrodriguez.co.kalv.io/projects/${content?.directory}/${source}`;
-                                        return (type === "video"? 
-                                            <Video key={index} source={sourceURL} controls autoPlay muted onContextMenu={event => event.preventDefault()} /> :
-                                            <Image key={index} source={sourceURL} alt={alt} onContextMenu={event => event.preventDefault()} draggable={false} />
-                                        )
-                                    })}
-                                </div>
+                            {/* The body opens with Sam's own title / type / date headings. */}
+                            <div className={classes.body}>
+                                {content && renderNode(content.body, {config, assetsById})}
                             </div>
                         </Container>
                     </div>

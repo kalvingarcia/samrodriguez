@@ -1,12 +1,12 @@
 "use client"
 import {useEffect, useState, useRef} from 'react';
 import {tss} from '../components/common/theme';
-import {Title} from '../components/common/typography';
+import {Title, Body} from '../components/common/typography';
 import Project from '../components/project';
 import ProjectContent from '../components/project-content';
 import IconButton from '../components/common/iconography';
 import useProject from '../components/hooks/project';
-import projects from '../../public/projects.json';
+import {useProjects} from '../klive/hooks';
 
 const useStyles = tss.create(({theme, open, contentHeight, contentSize, ROW_COUNT}) => ({
     section: {
@@ -19,6 +19,10 @@ const useStyles = tss.create(({theme, open, contentHeight, contentSize, ROW_COUN
     },
     title: {
         color: theme.secondary.onContainer.hex()
+    },
+    status: {
+        padding: "40px 20px",
+        textAlign: "center"
     },
     content: {
         width: "100%",
@@ -65,6 +69,7 @@ export default function Projects({}) {
     const [openProject, setOpenProject] = useState(false);
     const [projectContent, setProjectContent] = useState(undefined);
     const {project, closeProject} = useProject();
+    const {projects, loading, error} = useProjects();
     const handleClose = () => {
         closeProject();
         setOpenProject(false);
@@ -72,11 +77,11 @@ export default function Projects({}) {
     useEffect(() => {
         if(project) {
             setOpenProject(true);
-            setProjectContent(projects.find(({directory}) => directory === project));
+            setProjectContent(projects.find(({slug}) => slug === project));
         } else {
             setOpenProject(false)
         }
-    }, [project]);
+    }, [project, projects]);
     const [contentHeight, setContentHeight] = useState();
     const [contentSize, setContentSize] = useState();
 
@@ -89,15 +94,16 @@ export default function Projects({}) {
             rows.push(
                 <div key={i} className={classes.row}>
                     {chunk.map(project => (
-                        <Project key={project.directory} {...project} />
+                        <Project key={project.slug} {...project} />
                     ))}
                 </div>
             );
         }
         return rows;
     }
-    const [rows, setRows] = useState(generateRows());
-    useEffect(() => {    
+    const [rows, setRows] = useState([]);
+    // Rebuilt whenever the projects arrive from klive, as well as on resize.
+    useEffect(() => {
         const checkWindowSize = () => {
             const width = Math.min(1000, window.innerWidth);
             ROW_COUNT.current = width === 1000? 3 : 2;
@@ -110,14 +116,17 @@ export default function Projects({}) {
 
         window.addEventListener("resize", checkWindowSize);
         return () => window.removeEventListener("resize", checkWindowSize);
-    }, []);
+    }, [projects]);
 
     return (
         <section id="projects" className={classes.section}>
             <Title className={classes.title}>{open? "My Projects" : "Featured Projects"}</Title>
-            <div className={classes.content}>
-                {rows}
-            </div>
+            {loading || error?
+                <Body className={classes.status}>{loading? "Loading projects…" : "Projects couldn't be loaded. Please try again later."}</Body> :
+                <div className={classes.content}>
+                    {rows}
+                </div>
+            }
             <IconButton onClick={() => setOpen(!open)} icon={open? "keyboard_arrow_up" : "keyboard_arrow_down"} role="secondary" />
             <ProjectContent show={openProject} content={projectContent} handleClose={handleClose} />
             <svg className={classes.wave} xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" preserveAspectRatio='none' viewBox="0 0 900 350" version="1.1">

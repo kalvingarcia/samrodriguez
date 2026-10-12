@@ -1,5 +1,4 @@
 "use client"
-import { useEffect, useState } from 'react';
 import {tss} from './theme';
 
 const useStyles = tss.create(({theme}) => ({
@@ -10,11 +9,11 @@ const useStyles = tss.create(({theme}) => ({
     }
 }));
 
-export default function Image({className, source, ...props}) {
+export default function Video({className, source, mimeType = "video/mp4", ...props}) {
     const {cx, classes} = useStyles();
     return (
         <video className={cx(classes.video, className)} {...props}>
-            <source src={source} type="video/mp4" />
+            <source src={source} type={mimeType} />
             Your browser does not support the video tag.
         </video>
     );
