@@ -1,9 +1,10 @@
 "use client"
 import {useState} from 'react';
 import {tss} from './common/theme';
-import Image from '../components/common/image';
 import { Label } from './common/typography';
 import useProject from './hooks/project';
+import Asset from '../klive/blocks/shared/asset';
+import {useAsset} from '../klive/hooks';
 
 const useStyles = tss.create(({theme, hovered}) => ({
     project: {
@@ -17,7 +18,8 @@ const useStyles = tss.create(({theme, hovered}) => ({
     },
     thumbnail: {
         width: "100%",
-        height: "100%"
+        height: "100%",
+        objectFit: "cover"
     },
     label: {
         padding: "20px",
@@ -37,14 +39,15 @@ const useStyles = tss.create(({theme, hovered}) => ({
     }
 }));
 
-export default function Project({directory, name, type}) {
+export default function Project({slug, title, cover}) {
     const {openProject} = useProject();
+    const thumbnail = useAsset(cover, "thumb");
     const [hovered, setHovered] = useState(false);
     const {classes} = useStyles({hovered})
     return (
-        <div className={classes.project} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} onClick={() => openProject(directory)}>
-            <Image className={classes.thumbnail} source={`https://s3.samrodriguez.co.kalv.io/projects/${directory}/thumbnail.webp`} alt="Project link for opening project info." />
-            <Label className={classes.label}>{name}</Label>
+        <div className={classes.project} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} onClick={() => openProject(slug)}>
+            <Asset className={classes.thumbnail} asset={thumbnail && {...thumbnail, alt_text: "Project link for opening project info."}} ambient />
+            <Label className={classes.label}>{title}</Label>
         </div>
     )
 }
