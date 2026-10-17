@@ -16,6 +16,9 @@ export function useProjects() {
                     cover: entry.cover_asset_id?? extractReferencedAssetIds(entry.body)[0]
                 }));
                 setState({projects, loading: false, error: null});
+                // Warm the asset cache for every cover now, instead of waiting for each
+                // <Project> card to mount and request its own thumbnail.
+                projects.forEach(({cover}) => cover && getAsset(cover, "thumb").catch(() => {}));
             })
             .catch(error => {
                 if(cancelled) return;
