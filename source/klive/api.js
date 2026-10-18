@@ -1,17 +1,11 @@
-// Read-only client for the klive delivery API. The delivery key can only read published
-// content, so it's safe for it to ship in the browser bundle.
+// Read-only client for the klive delivery API. Published content and media are public,
+// so no key is needed.
 const BASE_URL = process.env.NEXT_PUBLIC_KLIVE_URL;
-const API_KEY = process.env.NEXT_PUBLIC_KLIVE_KEY;
 const COLLECTION = "portfolio";
 const PAGE_SIZE = 100;
-// Media URLs are presigned for 1 hour; refetch a little before they expire.
-const ASSET_TTL = 50 * 60 * 1000;
-
-const VIDEO_TYPES = {mp4: "video/mp4", mov: "video/quicktime", webm: "video/webm", m4v: "video/mp4"};
-const IMAGE_TYPES = {jpg: "image/jpeg", jpeg: "image/jpeg", png: "image/png", gif: "image/gif", webp: "image/webp", avif: "image/avif", svg: "image/svg+xml"};
 
 export async function kliveFetch(path) {
-    const response = await fetch(`${BASE_URL}${path}`, {headers: {"X-API-Key": API_KEY}});
+    const response = await fetch(`${BASE_URL}${path}`);
     if(!response.ok) throw new Error(`klive ${path} responded ${response.status}`);
     return response.json();
 }
@@ -33,34 +27,36 @@ export function getRenderConfig() {
     return kliveFetch(`/collections/${COLLECTION}/render-config`);
 }
 
-// The delivery API only returns a signed URL, so the mime type comes from its extension.
-function mimeTypeFromURL(url) {
-    const extension = new URL(url).pathname.split(".").pop().toLowerCase();
-    return VIDEO_TYPES[extension]?? IMAGE_TYPES[extension]?? "application/octet-stream";
+/** The URL that serves an asset's bytes directly, usable as an <img>/<video> src. */
+export function mediaURL(id, size = "full") {
+    return `${BASE_URL}/media/${encodeURIComponent(id)}/${size}`;
 }
 
 const assetCache = new Map();
 
 /**
  * Resolves an asset id to the same shape the klive block renderers expect
- * (`{id, url, mime_type, width, height, alt_text}`). Requests are cached per id + size
- * until shortly before the signed URL expires.
+ * (`{id, url, mime_type, width, height, alt_text}`). Media URLs have no extension, so a
+ * HEAD request supplies the mime type. They're immutable, so results are cached for good.
  */
 export function getAsset(id, size = "full") {
     const key = `${id}/${size}`;
-    const cached = assetCache.get(key);
-    if(cached && cached.expires > Date.now()) return cached.promise;
+    if(assetCache.has(key)) return assetCache.get(key);
 
-    const promise = kliveFetch(`/media/${encodeURIComponent(id)}/${size}`).then(({url}) => ({
-        id,
-        url,
-        mime_type: mimeTypeFromURL(url),
-        width: null,
-        height: null,
-        alt_text: null
-    }));
+    const url = mediaURL(id, size);
+    const promise = fetch(url, {method: "HEAD"}).then(response => {
+        if(!response.ok) throw new Error(`klive ${url} responded ${response.status}`);
+        return {
+            id,
+            url,
+            mime_type: response.headers.get("Content-Type")?? "application/octet-stream",
+            width: null,
+            height: null,
+            alt_text: null
+        };
+    });
     // Don't cache failures, so a later render can retry.
     promise.catch(() => assetCache.delete(key));
-    assetCache.set(key, {promise, expires: Date.now() + ASSET_TTL});
+    assetCache.set(key, promise);
     return promise;
 }
